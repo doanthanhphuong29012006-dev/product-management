@@ -26,8 +26,6 @@ app.use(flash());
 const routeAdmin = require('./routes/admin/index.route');
 const route = require('./routes/client/index.route');
 
-database.connect();
-
 app.set("views", `${__dirname}/views`);
 app.set("view engine", "pug");
 
@@ -36,6 +34,11 @@ app.set("view engine", "pug");
 app.locals.prefixAdmin = systemConfig.prefixAdmin;
 
 app.use(express.static(`${__dirname}/public`));
+
+app.use(async (req, res, next) => {
+    await database.connect();
+    next();
+});
 
 //Routes
 routeAdmin(app);
