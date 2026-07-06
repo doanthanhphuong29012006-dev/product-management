@@ -38,7 +38,7 @@ a {
 }
 
 .header .inner-menu > ul > li > a:hover {
-    color: #ff3d00;
+    color: #ff3493;
 }
 /* End Header */
 
@@ -112,7 +112,7 @@ a {
 }
 
 .product-item .inner-title-product a:hover {
-    color: #ff3d00;
+    color: #ff3493;
 }
 
 .product-item .inner-price {
@@ -124,7 +124,7 @@ a {
 .product-item .inner-price-new {
     font-size: 18px;
     font-weight: 600;
-    color: #ff3d00;
+    color: #ff3493;
     margin-right: 10px;
 }
 
@@ -138,7 +138,7 @@ a {
     font-size: 14px;
     font-weight: 600;
     color: #fff;
-    background: #ff3d00;
+    background: #ff3493;
     padding: 3px 8px;
     border-radius: 4px;
     display: inline-block;
