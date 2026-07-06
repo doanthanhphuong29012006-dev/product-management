@@ -1,0 +1,151 @@
+/* Header */
+.header {
+  background: #202020;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  /* Thêm đổ bóng nhẹ */
+}
+
+.header .inner-logo a {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  /* Bỏ gạch chân */
+  padding-left: 20px;
+  /* Đẩy logo vào trong một chút */
+  letter-spacing: 1px;
+}
+
+/* End Header */
+
+/* Body */
+.body .sider {
+  width: 180px;
+  /* Tăng độ rộng lên một chút cho cân đối */
+  background: #2c323f;
+  /* Đổi sang màu xanh đen hiện đại hơn */
+  color: #fff;
+  height: calc(100vh - 62px);
+  /* Chỉnh lại theo chiều cao header */
+  position: fixed;
+  top: 62px;
+  left: 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Style mới cho các nút Menu trong Sider --- */
+.body .sider ul {
+  list-style: none;
+  /* Bỏ dấu chấm tròn */
+  padding: 0;
+  margin: 0;
+}
+
+.body .sider ul li a {
+  display: block;
+  color: #aeb2b7;
+  /* Màu chữ dịu mắt */
+  padding: 15px 20px;
+  text-decoration: none;
+  /* Bỏ gạch chân màu xanh */
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  /* Hiệu ứng mượt mà khi di chuột */
+}
+
+.body .sider ul li a:hover {
+  background: #20252f;
+  color: #fff;
+  border-left: 4px solid #198754;
+  /* Đường kẻ xanh lá giống nút Bootstrap */
+}
+
+/* --------------------------------------------- */
+
+.body .main {
+  margin: 20px;
+  position: relative;
+  left: 180px;
+  /* Khớp với độ rộng của sider mới */
+  width: calc(100% - 220px);
+  /* Để hở lề bên phải cho thoáng */
+}
+
+/* End Body */
+
+/* Show Alert */
+[show-alert] {
+  position: fixed;
+  top: 70px;
+  right: 15px;
+  z-index: 9999;
+  padding-right: 40px !important;
+}
+
+[show-alert].alert-hidden {
+  animation-name: alert-hidden;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+@keyframes alert-hidden {
+  from {
+    right: 15px;
+  }
+
+  to {
+    right: -100%;
+    display: none;
+  }
+}
+
+[show-alert] [close-alert] {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+
+  background: rgba(255, 255, 255, 0.4);
+  color: #333;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 26px;
+  height: 26px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 50%;
+  cursor: pointer;
+
+  transition: all 0.25s ease-in-out;
+}
+
+[show-alert] [close-alert]:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: #dc3545;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* End Show Alert */
+
+/* Image Preview */
+.image-preview {
+  width: 150px;
+  height: auto;
+  margin-top: 15px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.image-preview[src=""] {
+  display: none;
+}
+/* End Image Preview */
