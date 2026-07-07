@@ -4,6 +4,7 @@ include ../../mixins/search.pug
 include ../../mixins/pagination.pug
 include ../../mixins/form-change-multi.pug
 include ../../mixins/alert.pug
+include ../../mixins/sort.pug
 
 block main
     +alert-success("5000")
@@ -19,99 +20,111 @@ block main
 
                 .col-6
                     +search(keyword) 
+
+    .card.mb-3
+        .card-header Sắp xếp
+
         .card-body
-            .row 
-                .col-8
-                    +form-change-multi(`${prefixAdmin}/products/change-multi?_method=PATCH`)  
+            .row
 
-                .col-4 
-                    a(
-                        href=`${prefixAdmin}/products/create`
-                        class="btn btn-outline-success"
-                    ) + Thêm mới
+                .col-4
+                    +sort()
 
-            table(
-                class="table table-hover table-sm"
-                checkbox-multi
-            )
+    .card.mb-3
+        .card-header Danh sách
+            .card-body
+                .row 
+                    .col-8
+                        +form-change-multi(`${prefixAdmin}/products/change-multi?_method=PATCH`)  
 
-                thead
-                    tr
-                        th
-                            input(type="checkbox", name="checkall")
-                        th STT
-                        th Hình ảnh
-                        th Tiêu đề
-                        th Giá
-                        th Vị trí
-                        th Trạng thái
-                        th Hành động
+                    .col-4 
+                        a(
+                            href=`${prefixAdmin}/products/create`
+                            class="btn btn-outline-success mb-2"
+                        ) + Thêm mới
 
-                tbody
-                    each item, index in products
+                table(
+                    class="table table-hover table-sm align-middle"
+                    checkbox-multi
+                )
 
+                    thead
                         tr
-                            td 
-                                input(type="checkbox" 
-                                name="id"
-                                value=item.id
-                            )
-                            td #{index + 1}
+                            th
+                                input(type="checkbox", name="checkall")
+                            th STT
+                            th Hình ảnh
+                            th Tiêu đề
+                            th Giá
+                            th Vị trí
+                            th Trạng thái
+                            th Hành động
 
-                            td
-                                img(
-                                    src=item.thumbnail
-                                    alt=item.title
-                                    width="100"
+                    tbody
+                        each item, index in products
+
+                            tr
+                                td 
+                                    input(type="checkbox" 
+                                    name="id"
+                                    value=item.id
                                 )
+                                td #{index + 1}
 
-                            td #{item.title}
+                                td
+                                    img(
+                                        src=item.thumbnail
+                                        alt=item.title
+                                        width="100"
+                                    )
 
-                            td #{item.price}$
+                                td #{item.title}
 
-                            td
-                                input(
-                                    type="number"
-                                    value=item.position
-                                    style="width: 60px"
-                                    min="1"
-                                    name="position"
-                                )
+                                td #{item.price}$
 
-                            td
-                                if (item.status === "active")
+                                td
+                                    input(
+                                        type="number"
+                                        value=item.position
+                                        style="width: 60px"
+                                        min="1"
+                                        name="position"
+                                    )
+
+                                td
+                                    if (item.status === "active")
+                                        a(
+                                            href="javascript:;"
+                                            data-status=item.status
+                                            data-id=item.id 
+                                            button-change-status 
+                                            class="btn btn-success btn-sm"
+                                        ) Hoạt động
+                                    else 
+                                        a(
+                                            href="javascript:;"
+                                            data-status=item.status
+                                            data-id=item.id 
+                                            button-change-status 
+                                            class="btn btn-danger btn-sm"
+                                        ) Dừng hoạt động
+
+                                td
                                     a(
-                                        href="javascript:;"
-                                        data-status=item.status
-                                        data-id=item.id 
-                                        button-change-status 
-                                        class="btn btn-success btn-sm"
-                                    ) Hoạt động
-                                else 
+                                        href=`${prefixAdmin}/products/detail/${item.id}`
+                                        class="btn btn-secondary btn-sm"
+                                    ) Chi tiết
+
                                     a(
-                                        href="javascript:;"
-                                        data-status=item.status
-                                        data-id=item.id 
-                                        button-change-status 
-                                        class="btn btn-danger btn-sm"
-                                    ) Dừng hoạt động
+                                        href=`${prefixAdmin}/products/edit/${item.id}`
+                                        class="btn btn-warning btn-sm ms-1"
+                                    ) Sửa
 
-                            td
-                                a(
-                                    href=`${prefixAdmin}/products/detail/${item.id}`
-                                    class="btn btn-secondary btn-sm"
-                                ) Chi tiết
-
-                                a(
-                                    href=`${prefixAdmin}/products/edit/${item.id}`
-                                    class="btn btn-warning btn-sm"
-                                ) Sửa
-
-                                button(
-                                    class="btn btn-danger btn-sm ms-1"
-                                    data-id=item.id
-                                    button-delete
-                                ) Xóa
+                                    button(
+                                        class="btn btn-danger btn-sm ms-1"
+                                        data-id=item.id
+                                        button-delete
+                                    ) Xóa
 
     +pagination(pagination)
 

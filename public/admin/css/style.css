@@ -149,3 +149,8 @@
   display: none;
 }
 /* End Image Preview */
+
+.table tbody td {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}
