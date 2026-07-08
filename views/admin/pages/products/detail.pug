@@ -42,7 +42,7 @@ block main
 
     if (product.description)
         div(class="mb-4")
-            | #{product.description}
+            | !{product.description}
 
     a(
         href=`${prefixAdmin}/products/edit/${product.id}`
