@@ -10,6 +10,10 @@ cloudinary.config({
 // End Config Cloudinary
 
 module.exports.upload = (req, res, next) => {
+    if (!req.file) {
+        return next();
+    }
+
     let streamUpload = (req) => {
         return new Promise((resolve, reject) => {
             let stream = cloudinary.uploader.upload_stream(
@@ -27,9 +31,15 @@ module.exports.upload = (req, res, next) => {
     };
 
     async function upload(req) {
-        let result = await streamUpload(req);
-        req.body[req.file.fieldname] = result.url;
-        next();
+        try {
+            let result = await streamUpload(req);
+            req.body[req.file.fieldname] = result.url;
+            next();
+        } catch (error) {
+            console.error("Lỗi upload ảnh lên Cloudinary:", error);
+            // Gửi lỗi để server không bị crash
+            next(error); 
+        }
     }
 
     upload(req);

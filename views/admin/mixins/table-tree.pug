@@ -1,0 +1,67 @@
+mixin table-tree(items, level = 1, prefixStt = '')
+    each item, index in items
+        - const currentStt = prefixStt ? `${prefixStt}.${index + 1}` : (index + 1)
+
+        tr
+            td 
+                input(type="checkbox" 
+                name="id"
+                value=item.id
+            )
+            td #{currentStt}
+
+            td
+                img(
+                    src=item.thumbnail
+                    alt=item.title
+                    width="100"
+                )
+
+            td #{item.title}
+
+            td
+                input(
+                    type="number"
+                    value=item.position
+                    style="width: 60px"
+                    min="1"
+                    name="position"
+                )
+
+            td
+                if (item.status === "active")
+                    a(
+                        href="javascript:;"
+                        data-status=item.status
+                        data-id=item.id 
+                        button-change-status 
+                        class="btn btn-success btn-sm"
+                    ) Hoạt động
+                else 
+                    a(
+                        href="javascript:;"
+                        data-status=item.status
+                        data-id=item.id 
+                        button-change-status 
+                        class="btn btn-danger btn-sm"
+                    ) Dừng hoạt động
+
+            td
+                a(
+                    href=`${prefixAdmin}/products-category/detail/${item.id}`
+                    class="btn btn-secondary btn-sm"
+                ) Chi tiết
+
+                a(
+                    href=`${prefixAdmin}/products-category/edit/${item.id}`
+                    class="btn btn-warning btn-sm ms-1"
+                ) Sửa
+
+                button(
+                    class="btn btn-danger btn-sm ms-1"
+                    data-id=item.id
+                    button-delete
+                ) Xóa
+
+        if item.children && item.children.length > 0
+            +table-tree(item.children, level + 1, currentStt)
