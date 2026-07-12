@@ -1,0 +1,100 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+include ../../mixins/select-tree.pug
+
+block main
+    h1.mb-4 Chỉnh sửa danh mục sản phẩm
+
+    +alert-error(500)
+
+    form(
+        action=`${prefixAdmin}/products-category/edit/${record.id}?_method=PATCH`
+        method="POST"
+        enctype="multipart/form-data"
+    )
+
+        .mb-3
+            label.form-label(for="title") Tiêu đề
+            input.form-control(
+                type="text"
+                id="title"
+                name="title"
+                value=record.title
+                required
+            )
+
+        .mb-3
+            label.form-label(for="parent_id") Danh mục cha
+
+            select.form-select(
+                name="parent_id"
+                id="parent_id"
+            )
+                if (records)
+                    +select-tree(records, 1, record.parent_id)
+
+        .mb-3
+            label.form-label(for="desc") Mô tả
+            textarea.form-control(
+                id="desc"
+                name="description"
+                rows="5"
+                textarea-mce
+            ) !{record.description}
+
+        .mb-3(upload-image)
+            label.form-label(for="thumbnail") Ảnh
+
+            input.form-control(
+                type="file"
+                id="thumbnail"
+                name="thumbnail"
+                accept="image/*"
+                upload-image-input
+            )
+
+            img.image-preview.mt-3(
+                src=record.thumbnail
+                upload-image-preview
+            )
+
+        .mb-3
+            label.form-label(for="position") Vị trí
+
+            input.form-control(
+                type="number"
+                id="position"
+                name="position"
+                placeholder="Tự động tăng"
+                value=record.position
+            )
+
+        .mb-3
+            label.form-label.d-block Trạng thái
+
+            .form-check.form-check-inline
+                input.form-check-input(
+                    type="radio"
+                    id="statusActive"
+                    name="status"
+                    value="active"
+                    checked=(record.status == "active" ? true : false)
+                )
+
+                label.form-check-label(for="statusActive")
+                    | Hoạt động
+
+            .form-check.form-check-inline
+                input.form-check-input(
+                    type="radio"
+                    id="statusInactive"
+                    name="status"
+                    value="inactive"
+                    checked=(record.status == "inactive" ? true : false)
+                )
+
+                label.form-check-label(for="statusInactive")
+                    | Dừng hoạt động
+
+        button.btn.btn-primary(type="submit")
+            | Cập nhật
