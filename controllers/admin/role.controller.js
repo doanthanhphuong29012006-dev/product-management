@@ -65,3 +65,25 @@ module.exports.editPatch = async (req, res) => {
     res.redirect(currentUrl);
 }
 
+// [GET]/admin/roles/detail/:id
+module.exports.detail = async (req, res) => {
+    try {
+        const id = req.params.id;
+
+        let find = {
+            deleted: false,
+            _id: id
+        }
+
+        const record = await Role.findOne(find);
+
+        res.render('admin/pages/roles/detail', {
+            pageTitle: "Chỉnh sửa nhóm quyền",
+            record: record
+        });
+    } catch (error) {
+        req.flash('error', "Không tồn tại nhóm quyền này!");
+        res.redirect(`${systemConfig.prefixAdmin}/roles`);
+    }
+}
+

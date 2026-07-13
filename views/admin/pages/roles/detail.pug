@@ -1,0 +1,39 @@
+extends ../../layouts/default.pug
+
+block main
+
+    .container.my-4
+        .role-detail-card
+            .card-header-pink
+                h1.title-pink Chi tiết Nhóm quyền
+            
+            .card-body-pink
+                if (record.title)
+                    .detail-group
+                        label.detail-label Tên nhóm quyền:
+                        .detail-text #{record.title}
+
+                if (record.description)
+                    .detail-group
+                        label.detail-label Mô tả:
+                        .detail-text #{record.description}
+
+                .detail-group
+                    label.detail-label Danh sách quyền hạn:
+                    if (record.permissions && record.permissions.length > 0)
+                        .permissions-list
+                            each permission in record.permissions
+                                span.badge-pink #{permission}
+                    else
+                        .empty-text Nhóm quyền này chưa được cấp bất kỳ quyền hạn nào.
+
+                .action-buttons.mt-5
+                    a(
+                        href=`${prefixAdmin}/roles/edit/${record.id}` 
+                        class="btn btn-edit-pink me-2"
+                    ) Chỉnh sửa
+                    
+                    a(
+                        href=`${prefixAdmin}/roles` 
+                        class="btn btn-back-pink"
+                    ) Trở về danh sách

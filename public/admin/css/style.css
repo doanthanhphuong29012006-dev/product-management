@@ -154,3 +154,111 @@
     padding-top: 15px !important;
     padding-bottom: 15px !important;
 }
+
+/* Permission UI */
+.role-detail-card {
+    background-color: #ffffff;
+    border: 1px solid #f8cce5;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(232, 62, 140, 0.08);
+    overflow: hidden;
+    max-width: 700px;
+}
+
+.card-header-pink {
+    background-color: #ffe6f2;
+    padding: 20px 30px;
+    border-bottom: 2px solid #ffccdf;
+}
+
+.title-pink {
+    color: #d63384;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.card-body-pink {
+    padding: 30px;
+}
+
+.detail-group {
+    margin-bottom: 25px;
+}
+
+.detail-label {
+    font-weight: 600;
+    color: #6c757d;
+    margin-bottom: 8px;
+    display: block;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-text {
+    font-size: 16px;
+    color: #212529;
+    background: #fcf8fa;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border-left: 4px solid #e83e8c;
+}
+
+.empty-text {
+    color: #adb5bd;
+    font-style: italic;
+    font-size: 15px;
+}
+
+.permissions-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.badge-pink {
+    background-color: #ffcce6;
+    color: #cc0066;
+    padding: 8px 14px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid #ffb3d9;
+    box-shadow: 0 2px 4px rgba(232, 62, 140, 0.1);
+}
+
+.btn-edit-pink {
+    background-color: #e83e8c;
+    color: #ffffff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-edit-pink:hover {
+    background-color: #d63384;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(232, 62, 140, 0.3);
+}
+
+.btn-back-pink {
+    background-color: transparent;
+    color: #e83e8c;
+    border: 1px solid #e83e8c;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-back-pink:hover {
+    background-color: #ffe6f2;
+    color: #d63384;
+    border-color: #d63384;
+}
+
+/* End Permission UI */

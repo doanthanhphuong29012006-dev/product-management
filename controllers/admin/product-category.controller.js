@@ -159,7 +159,7 @@ module.exports.deleteItem = async (req, res) => {
         deletedAt: new Date() 
     });
 
-    req.flash('success', "Xóa sản phẩm thành công!");
+    req.flash('success', "Xóa danh mục thành công!");
     
     const currentUrl = req.get('Referrer');
     res.redirect(currentUrl);
