@@ -1,39 +1,51 @@
 extends ../../layouts/default.pug
 
 block main 
-    .container.my-3 
-        .row 
-            .col-12 
-                if (product.title)
-                    h1(class="mb-4") #{product.title}
+    link(rel="stylesheet", href="/css/product-detail.css")
 
-                if (product.price)
-                    div(class="mb-4")
-                        | Giá:
-                        b #{product.price}$
+    .container.my-5 
+        .product-detail-card
+            .row 
+                .col-md-5
+                    .product-image-wrapper
+                        if (product.thumbnail)
+                            img.product-img(
+                                src=product.thumbnail
+                                alt=product.title
+                            )
+                        if (product.discountPercentage)
+                            .discount-badge -#{product.discountPercentage}%
 
-                if (product.discountPercentage)
-                    div(class="mb-4")
-                        | Giảm giá:
-                        b #{product.discountPercentage}%
+                .col-md-7
+                    .product-info
+                        if (product.title)
+                            h1.product-title #{product.title}
 
-                if (product.stock)
-                    div(class="mb-4")
-                        | Còn lại:
-                        b #{product.stock}
+                        .product-price-box
+                            if (product.price)
+                                if (product.discountPercentage)
+                                    - var newPrice = (product.price * (100 - product.discountPercentage) / 100).toFixed(0)
+                                    span.price-new #{newPrice}$
+                                    span.price-old #{product.price}$
+                                else
+                                    span.price-new #{product.price}$
 
-                if (product.thumbnail)
-                    div(class="mb-4")
-                        img(
-                            src=product.thumbnail
-                            style="width: 100px"
-                        )
+                        .product-stats
+                            if (product.stock)
+                                .stat-item
+                                    span.stat-label 📦 Kho:
+                                    span.stat-value #{product.stock} sản phẩm
+                                    
+                            if (product.position)
+                                .stat-item
+                                    span.stat-label 📍 Vị trí:
+                                    span.stat-value #{product.position}
 
-                if (product.position)
-                    div(class="mb-4")
-                        | Vị trí:
-                        b #{product.position}
+                        .action-buttons
+                            button.btn.btn-cart-pink Thêm vào giỏ hàng 🛒
 
-                if (product.description)
-                    div(class="mb-4")
-                        | !{product.description}
+                        if (product.description)
+                            .product-desc
+                                h3.desc-title Mô tả sản phẩm
+                                .desc-content
+                                    | !{product.description}
