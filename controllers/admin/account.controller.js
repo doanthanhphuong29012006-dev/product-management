@@ -16,7 +16,7 @@ module.exports.index = async (req, res) => {
             _id: record.role_id,
             deleted: false,
         });
-        record.role = role.title;
+        record.role = role;
     }
 
     res.render('admin/pages/accounts/index', {
@@ -120,4 +120,32 @@ module.exports.editPatch = async (req, res) => {
         const currentUrl = req.get('Referrer');
         res.redirect(currentUrl);
     }
+}
+
+// [PATCH]/admin/accounts/change-status/:status/:id
+module.exports.changeStatus = async (req, res) => {
+    const status = req.params.status;
+    const id = req.params.id;
+    
+    await Account.updateOne({ _id: id }, { status: status });
+    
+    req.flash('success', 'Cập nhật trạng thái thành công!');
+
+    const currentUrl = req.get('Referrer');
+    res.redirect(currentUrl);
+}
+
+// [DELETE] /admin/accounts/delete/:id
+module.exports.deleteAccount = async (req, res) => {
+    const id = req.params.id;
+    
+    await Account.updateOne({ _id: id }, { 
+        deleted: true,
+        deletedAt: new Date() 
+    });
+
+    req.flash('success', "Xóa tài khoản thành công!");
+    
+    const currentUrl = req.get('Referrer');
+    res.redirect(currentUrl);
 }
