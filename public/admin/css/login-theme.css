@@ -1,0 +1,82 @@
+body {
+    background: linear-gradient(135deg, #ffe6f2 0%, #ffb3d9 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.login-background {
+    width: 100%;
+}
+
+.login-card {
+    background-color: #ffffff;
+    padding: 40px 35px;
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(232, 62, 140, 0.2);
+    border: 3px dashed #ffccdf;
+}
+
+.title-pink {
+    color: #d63384;
+    font-weight: 800;
+    font-size: 28px;
+    margin-top: 15px;
+    letter-spacing: 1px;
+}
+
+.pig-logo {
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+    animation: bounce 2s infinite ease-in-out;
+}
+
+.pig-emoji {
+    font-size: 65px;
+    display: inline-block;
+    animation: bounce 2s infinite ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+.form-label {
+    color: #d63384;
+}
+
+.input-pink {
+    border: 2px solid #ffccdf;
+    border-radius: 12px;
+    padding: 12px 15px;
+    background-color: #fffafc;
+    transition: all 0.3s ease;
+}
+
+.input-pink:focus {
+    border-color: #e83e8c;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(232, 62, 140, 0.15);
+    outline: none;
+}
+
+.btn-login-pink {
+    background-color: #e83e8c;
+    color: white;
+    font-weight: 700;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-login-pink:hover {
+    background-color: #d63384;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(232, 62, 140, 0.4);
+}

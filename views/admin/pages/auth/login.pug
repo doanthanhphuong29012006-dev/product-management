@@ -4,33 +4,45 @@ include ../../mixins/alert.pug
 block main
     +alert-error(5000)
 
-    .container.my-5
-        .row.justify-content-center
-            .col-md-6.col-lg-4
-                h1.text-center.mb-4 Đăng nhập
+    link(rel="stylesheet", href="/admin/css/login-theme.css")
 
-                form(
-                    action=`${prefixAdmin}/auth/login`
-                    method="POST"
-                )
-                    .mb-3
-                        label.form-label(for="email") Email
+    .login-background
+        .container.my-5
+            .row.justify-content-center
+                .col-md-6.col-lg-4
+                    .login-card
+                        .text-center.mb-4
+                            img.pig-logo(
+                                src="/images/pig-logo1.png" 
+                                alt="Pig Logo" 
+                                onerror="this.outerHTML='<span class=\\'pig-emoji\\'>🐷</span>'"
+                            )
+                            h1.title-pink Đăng nhập
 
-                        input.form-control(
-                            type="email"
-                            id="email"
-                            name="email"
+                        form(
+                            action=`${prefixAdmin}/auth/login`
+                            method="POST"
                         )
+                            .mb-3
+                                label.form-label.fw-bold(for="email") Email 🐽
+                                input.form-control.input-pink(
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Nhập email của bạn..."
+                                    required
+                                )
 
-                    .mb-3
-                        label.form-label(for="password") Mật khẩu
+                            .mb-3
+                                label.form-label.fw-bold(for="password") Mật khẩu 🔒
+                                input.form-control.input-pink(
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    placeholder="••••••••"
+                                    required
+                                )
 
-                        input.form-control(
-                            type="password"
-                            id="password"
-                            name="password"
-                        )
-
-                    button.btn.btn-primary.w-100(
-                        type="submit"
-                    ) Đăng nhập
+                            button.btn.btn-login-pink.w-100.mt-4(
+                                type="submit"
+                            ) Đăng nhập ngay
