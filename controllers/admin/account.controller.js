@@ -108,12 +108,8 @@ module.exports.editPatch = async (req, res) => {
             delete req.body.password;
         }
         
-        if (req.file) {
-            req.body.avatar = `/uploads/${req.file.filename}`;
-        }
-
         try {
-            await Account.updateOne({ _id: req.params.id }, req.body);
+            await Account.updateOne({ _id: id }, req.body);
             req.flash('success', "Cập nhật tài khoản thành công!");
         } catch (error) {
             req.flash('error', "Cập nhật tài khoản thất bại!");

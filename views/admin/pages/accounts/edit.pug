@@ -4,7 +4,8 @@ include ../../mixins/alert.pug
 block main
     h1.mb-4 Chỉnh sửa tài khoản
 
-    +alert-error(500)
+    +alert-error(5000)
+    +alert-success(5000)
 
     if (roles)
         form(
@@ -20,7 +21,6 @@ block main
                     id="fullName"
                     name="fullName"
                     value=data.fullName
-                    required
                 )
 
             .mb-3
@@ -30,7 +30,6 @@ block main
                     id="email"
                     name="email"
                     value=data.email
-                    required
                 )
 
             .mb-3
@@ -39,7 +38,6 @@ block main
                     type="password"
                     id="password"
                     name="password"
-                    required
                 )
 
             .mb-3
@@ -48,7 +46,7 @@ block main
                     type="text"
                     id="phone"
                     name="phone"
-                    value=data.fullName
+                    value=data.phone
                 )
 
             .mb-3(upload-image)
