@@ -1,264 +1,278 @@
-/* Header */
-.header {
-  background: #202020;
-  padding: 15px 0;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  /* Thêm đổ bóng nhẹ */
+body {
+    background-color: #fffafc;
 }
-
-.header .inner-logo a {
-  font-size: 24px;
-  font-weight: 700;
-  color: #fff;
-  text-decoration: none;
-  /* Bỏ gạch chân */
-  padding-left: 20px;
-  /* Đẩy logo vào trong một chút */
-  letter-spacing: 1px;
-}
-
-/* End Header */
-
-/* Body */
-.body .sider {
-  width: 180px;
-  /* Tăng độ rộng lên một chút cho cân đối */
-  background: #2c323f;
-  /* Đổi sang màu xanh đen hiện đại hơn */
-  color: #fff;
-  height: calc(100vh - 62px);
-  /* Chỉnh lại theo chiều cao header */
-  position: fixed;
-  top: 62px;
-  left: 0;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-/* --- Style mới cho các nút Menu trong Sider --- */
-.body .sider ul {
-  list-style: none;
-  /* Bỏ dấu chấm tròn */
-  padding: 0;
-  margin: 0;
-}
-
-.body .sider ul li a {
-  display: block;
-  color: #aeb2b7;
-  /* Màu chữ dịu mắt */
-  padding: 15px 20px;
-  text-decoration: none;
-  /* Bỏ gạch chân màu xanh */
-  font-weight: 500;
-  font-size: 15px;
-  transition: all 0.3s ease;
-  /* Hiệu ứng mượt mà khi di chuột */
-}
-
-.body .sider ul li a:hover {
-  background: #20252f;
-  color: #fff;
-  border-left: 4px solid #198754;
-  /* Đường kẻ xanh lá giống nút Bootstrap */
-}
-
-/* --------------------------------------------- */
 
 .body .main {
-  margin: 20px;
-  position: relative;
-  left: 180px;
-  /* Khớp với độ rộng của sider mới */
-  width: calc(100% - 220px);
-  /* Để hở lề bên phải cho thoáng */
+    margin: 20px 20px 20px 240px;
+    position: relative;
+    width: calc(100% - 260px);
+    transition: all 0.3s ease;
 }
 
-/* End Body */
-
-/* Show Alert */
-[show-alert] {
-  position: fixed;
-  top: 70px;
-  right: 15px;
-  z-index: 9999;
-  padding-right: 40px !important;
-}
-
-[show-alert].alert-hidden {
-  animation-name: alert-hidden;
-  animation-duration: 0.5s;
-  animation-fill-mode: both;
-}
-
-@keyframes alert-hidden {
-  from {
-    right: 15px;
-  }
-
-  to {
-    right: -100%;
-    display: none;
-  }
-}
-
-[show-alert] [close-alert] {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-
-  background: rgba(255, 255, 255, 0.4);
-  color: #333;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 26px;
-  height: 26px;
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 50%;
-  cursor: pointer;
-
-  transition: all 0.25s ease-in-out;
-}
-
-[show-alert] [close-alert]:hover {
-  background: rgba(255, 255, 255, 0.9);
-  color: #dc3545;
-  transform: translateY(-50%) scale(1.1);
-}
-
-/* End Show Alert */
-
-/* Image Preview */
-.image-preview {
-  width: 150px;
-  height: auto;
-  margin-top: 15px;
-  border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 5px;
-}
-
-.image-preview[src=""] {
-  display: none;
-}
-/* End Image Preview */
-
-.table tbody td {
-    padding-top: 15px !important;
-    padding-bottom: 15px !important;
-}
-
-/* Permission UI */
-.role-detail-card {
-    background-color: #ffffff;
-    border: 1px solid #f8cce5;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(232, 62, 140, 0.08);
-    overflow: hidden;
-    max-width: 700px;
-}
-
-.card-header-pink {
-    background-color: #ffe6f2;
-    padding: 20px 30px;
+/* =========================================
+   2. HEADER (Thanh trên cùng)
+========================================= */
+.header {
+    background: #ffffff !important;
+    padding: 10px 0;
+    box-shadow: 0 4px 15px rgba(232, 62, 140, 0.05);
     border-bottom: 2px solid #ffccdf;
+    position: sticky;
+    top: 0;
+    z-index: 999;
 }
 
-.title-pink {
+.logo-brand {
+    color: #d63384 !important;
+    font-weight: 800;
+    font-size: 20px;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.pig-logo-header {
+    width: 45px;
+    animation: bounce 2s infinite ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Nút đăng xuất */
+.btn-logout-pink {
+    background-color: #ffe6f2;
     color: #d63384;
-    font-size: 24px;
-    font-weight: 700;
+    border-radius: 20px;
+    padding: 6px 18px;
+    font-weight: bold;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-logout-pink:hover {
+    background-color: #ffccdf;
+    color: #cc0066;
+    transform: scale(1.05);
+}
+
+/* =========================================
+   3. SIDER (Cột menu bên trái)
+========================================= */
+.body .sider {
+    width: 220px;
+    background-color: #fffdf5 !important;
+    border-right: 2px dashed #ffccdf;
+    height: calc(100vh - 66px);
+    position: fixed;
+    top: 66px;
+    left: 0;
+    box-shadow: 2px 0 10px rgba(232, 62, 140, 0.03);
+    overflow-y: auto;
+}
+
+.body .sider .inner-menu ul {
+    list-style: none;
+    padding: 15px 10px;
     margin: 0;
 }
 
-.card-body-pink {
-    padding: 30px;
-}
-
-.detail-group {
-    margin-bottom: 25px;
-}
-
-.detail-label {
+.body .sider .inner-menu ul li a {
+    color: #d63384 !important;
     font-weight: 600;
-    color: #6c757d;
-    margin-bottom: 8px;
-    display: block;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.detail-text {
-    font-size: 16px;
-    color: #212529;
-    background: #fcf8fa;
-    padding: 12px 16px;
-    border-radius: 8px;
-    border-left: 4px solid #e83e8c;
-}
-
-.empty-text {
-    color: #adb5bd;
-    font-style: italic;
-    font-size: 15px;
-}
-
-.permissions-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.badge-pink {
-    background-color: #ffcce6;
-    color: #cc0066;
-    padding: 8px 14px;
-    border-radius: 50px;
-    font-size: 13px;
-    font-weight: 600;
-    border: 1px solid #ffb3d9;
-    box-shadow: 0 2px 4px rgba(232, 62, 140, 0.1);
-}
-
-.btn-edit-pink {
-    background-color: #e83e8c;
-    color: #ffffff;
-    border: none;
-    padding: 10px 24px;
-    border-radius: 8px;
-    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: 12px;
     transition: all 0.3s ease;
+    display: block;
+    margin-bottom: 8px;
+    text-decoration: none;
 }
 
-.btn-edit-pink:hover {
-    background-color: #d63384;
-    color: #ffffff;
-    transform: translateY(-2px);
+.body .sider .inner-menu ul li a:hover,
+.body .sider .inner-menu ul li a.active {
+    background-color: #ffe6f2 !important;
+    color: #e83e8c !important;
+    transform: translateX(6px);
+    box-shadow: -4px 0 0px #e83e8c;
+}
+
+/* =========================================
+   4. GHI ĐÈ BOOTSTRAP BUTTONS (Nút bấm)
+========================================= */
+/* Nút Tìm kiếm, Thêm mới */
+.btn-success {
+    background-color: #e83e8c !important;
+    border-color: #e83e8c !important;
+    border-radius: 10px;
+    color: white !important;
+}
+
+.btn-success:hover {
+    background-color: #d63384 !important;
     box-shadow: 0 4px 10px rgba(232, 62, 140, 0.3);
 }
 
-.btn-back-pink {
-    background-color: transparent;
-    color: #e83e8c;
-    border: 1px solid #e83e8c;
-    padding: 10px 24px;
-    border-radius: 8px;
+/* Nút Áp dụng */
+.btn-primary {
+    background-color: #ff66a3 !important;
+    border-color: #ff66a3 !important;
+    border-radius: 10px;
+}
+
+.btn-primary:hover {
+    background-color: #e64d8a !important;
+}
+
+/* Nút Lọc Trạng Thái (Outline) */
+.btn-outline-success {
+    color: #e83e8c !important;
+    border-color: #ffccdf !important;
+    border-radius: 10px;
     font-weight: 500;
-    transition: all 0.3s ease;
 }
 
-.btn-back-pink:hover {
-    background-color: #ffe6f2;
-    color: #d63384;
-    border-color: #d63384;
+.btn-outline-success:hover, 
+.btn-outline-success.active {
+    background-color: #ffe6f2 !important;
+    color: #d63384 !important;
+    border-color: #e83e8c !important;
 }
 
-/* End Permission UI */
+/* Nút Chi tiết */
+.btn-secondary {
+    background-color: #ffffff !important;
+    color: #e83e8c !important;
+    border: 1px solid #ffccdf !important;
+    border-radius: 8px;
+}
+
+.btn-secondary:hover {
+    background-color: #ffe6f2 !important;
+}
+
+/* Nút Sửa */
+.btn-warning {
+    background-color: #ffb84d !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px;
+}
+
+.btn-warning:hover {
+    background-color: #ffa31a !important;
+}
+
+/* Nút Xóa */
+.btn-danger:not(.btn-logout-pink) { 
+    background-color: #ff6680 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px;
+}
+
+.btn-danger:not(.btn-logout-pink):hover {
+    background-color: #ff3355 !important;
+}
+
+/* =========================================
+   5. KHUNG GIAO DIỆN & COMPONENTS
+========================================= */
+/* Cards */
+.card {
+    border: 1px solid #ffccdf;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(232, 62, 140, 0.05);
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: #fff0f5 !important;
+    color: #d63384 !important;
+    font-weight: 700;
+    border-bottom: 2px dashed #ffccdf !important;
+    padding: 15px 20px;
+}
+
+/* Table */
+.table tbody td {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    vertical-align: middle;
+}
+
+/* Pagination */
+.page-link {
+    color: #e83e8c !important;
+    border-color: #ffccdf !important;
+    border-radius: 8px;
+    margin: 0 3px;
+}
+
+.page-item.active .page-link {
+    background-color: #e83e8c !important;
+    border-color: #e83e8c !important;
+    color: white !important;
+}
+
+/* Image Preview */
+.image-preview {
+    width: 150px;
+    height: auto;
+    margin-top: 15px;
+    border: 2px dashed #ffccdf;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.image-preview[src=""] {
+    display: none;
+}
+
+/* =========================================
+   6. THÔNG BÁO (ALERTS)
+========================================= */
+[show-alert] {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 9999;
+    padding-right: 40px !important;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+[show-alert].alert-hidden {
+    animation: alert-hidden 0.5s both;
+}
+
+@keyframes alert-hidden {
+    from { right: 20px; }
+    to { right: -100%; display: none; }
+}
+
+[show-alert] [close-alert] {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.4);
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+}
+
+[show-alert] [close-alert]:hover {
+    background: rgba(255, 255, 255, 0.9);
+    color: #dc3545;
+    transform: translateY(-50%) scale(1.1);
+}

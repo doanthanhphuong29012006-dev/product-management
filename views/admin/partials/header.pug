@@ -4,10 +4,12 @@ header.header
 
             .col-3
                 .inner-logo
-                    a(href="/admin/dashboard") ADMIN
+                    a(href=`${prefixAdmin}/dashboard` class="d-flex align-items-center logo-brand")
+                        img.pig-logo-header.me-2(src="/images/pig-logo1.png" alt="Logo")
+                        span ADMIN
 
             .col-9
                 .text-end
-                    a.btn.btn-danger.btn-sm(
+                    a.btn.btn-logout-pink.btn-sm(
                         href=`${prefixAdmin}/auth/logout`
                     ) Đăng xuất
