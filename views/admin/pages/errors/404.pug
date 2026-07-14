@@ -1,0 +1,20 @@
+doctype html
+html
+    head
+        title #{pageTitle}
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css")
+        link(rel="stylesheet", href="/admin/css/404-theme.css")
+        link(rel="icon", type="image/png", href="/images/pig-logo1.png")
+
+    body
+        .not-found-wrapper
+            .not-found-card
+                h1.error-code 404
+                
+                .pig-dizzy-container
+                    img.pig-dizzy-img(src="/images/dizzy-pig.png" alt="Heo")
+
+                h2.error-title Ôi không! Bé heo đi lạc đường rồi...
+                p.error-desc Đăng ký làm gì! Trang admin ai cho đăng ký mà vô???
+
+                a.btn-pink-home(href=`${prefixAdmin}/dashboard`) Đưa bé heo về nhà

@@ -1,0 +1,87 @@
+body {
+    background: linear-gradient(135deg, #ffe6f2 0%, #ffb3d9 100%);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Khung card hiển thị lỗi */
+.not-found-card {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 60px 40px;
+    border-radius: 35px;
+    border: 3px dashed #ffccdf;
+    box-shadow: 0 15px 35px rgba(232, 62, 140, 0.15);
+    max-width: 550px;
+    width: 90%;
+    backdrop-filter: blur(10px);
+}
+
+/* Mã lỗi 404 bự chà bá */
+.error-code {
+    font-size: 120px;
+    font-weight: 900;
+    color: #d63384;
+    text-shadow: 6px 6px 0px #ffe6f2, -2px -2px 0px #ffb3d9;
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+.pig-dizzy-container {
+    margin: 15px 0 35px 0;
+}
+
+.pig-dizzy-img {
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+    animation: dizzy-shake 2.5s infinite ease-in-out;
+}
+
+@keyframes dizzy-shake {
+    0% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(-15deg) scale(1.1); }
+    50% { transform: rotate(10deg) scale(1); }
+    75% { transform: rotate(-5deg) scale(1.05); }
+    100% { transform: rotate(0deg) scale(1); }
+}
+
+/* Text tiêu đề và mô tả */
+.error-title {
+    color: #e83e8c;
+    font-weight: 800;
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.error-desc {
+    color: #6c757d;
+    font-size: 16px;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    padding: 0 20px;
+}
+
+/* Nút bấm quay về */
+.btn-pink-home {
+    background-color: #e83e8c;
+    color: white !important;
+    font-weight: 700;
+    padding: 14px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 16px;
+    display: inline-block;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+}
+
+.btn-pink-home:hover {
+    background-color: #d63384;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(232, 62, 140, 0.4);
+}

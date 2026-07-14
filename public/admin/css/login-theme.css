@@ -80,3 +80,26 @@ body {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(232, 62, 140, 0.4);
 }
+
+/* Nút Đăng ký (Secondary Button) */
+.btn-register-pink {
+    background-color: transparent;
+    color: #e83e8c;
+    font-weight: 700;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #e83e8c;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-register-pink:hover {
+    background-color: #ffe6f2;
+    color: #d63384;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(232, 62, 140, 0.2);
+    border-color: #d63384;
+}

@@ -52,3 +52,10 @@ module.exports.logout = (req, res) => {
     res.clearCookie("token");
     res.redirect(`${systemConfig.prefixAdmin}/auth/login`);
 };
+
+// [GET] /admin/auth/signup
+module.exports.signup = (req, res) => {
+    res.render('admin/pages/errors/404', {
+        pageTitle: "Trang đăng ký"
+    });
+};

@@ -24,7 +24,7 @@ block main
                             method="POST"
                         )
                             .mb-3
-                                label.form-label.fw-bold(for="email") Email 🐽
+                                label.form-label.fw-bold(for="email") Email
                                 input.form-control.input-pink(
                                     type="email"
                                     id="email"
@@ -34,7 +34,7 @@ block main
                                 )
 
                             .mb-3
-                                label.form-label.fw-bold(for="password") Mật khẩu 🔒
+                                label.form-label.fw-bold(for="password") Mật khẩu
                                 input.form-control.input-pink(
                                     type="password"
                                     id="password"
@@ -46,3 +46,7 @@ block main
                             button.btn.btn-login-pink.w-100.mt-4(
                                 type="submit"
                             ) Đăng nhập ngay
+
+                            a.btn.btn-register-pink.w-100.mt-3(
+                                href=`${prefixAdmin}/auth/signup`
+                            ) Tạo tài khoản mới
