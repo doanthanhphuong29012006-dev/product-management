@@ -13,23 +13,22 @@ block main
                 .col-lg-3.col-md-4.col-sm-6.mb-4
 
                     .product-item
-
                         .inner-image
-                            img(
-                                src=item.thumbnail
-                                alt=item.title
-                            )
+                            a(href=`/products/${item.slug}`)
+                                img(
+                                    src=item.thumbnail
+                                    alt=item.title
+                                )
+
+                            if item.discountPercentage
+                                .inner-discount -#{item.discountPercentage}%
 
                         .inner-content
-
                             h3.inner-title-product  
                                 a(
-                                    href=`products/${item.slug}`
+                                    href=`/products/${item.slug}`
                                 ) #{item.title}
 
                             .inner-price
                                 span.inner-price-new #{item.newPrice}$
                                 span.inner-price-old #{item.price}$
-
-                            .inner-discount
-                                span #{item.discountPercentage}%
