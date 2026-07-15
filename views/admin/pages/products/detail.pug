@@ -1,53 +1,82 @@
 extends ../../layouts/default.pug
+include ../../mixins/moment.pug
 
 block main
-    if (product.title)
-        h1(class="mb-4") #{product.title}
+    .container-fluid.my-4
+        .card.product-admin-card
+            .card-header.d-flex.justify-content-between.align-items-center
+                h4.mb-0.title-pink 
+                    i.fas.fa-info-circle.me-2
+                    | Chi tiết: #{product.title}
+                
+                if (role.permissions.includes("products_edit"))
+                    a.btn.btn-warning.btn-sm(href=`${prefixAdmin}/products/edit/${product.id}`) 
+                        | Chỉnh sửa sản phẩm
 
-    if (product.price)
-        div(class="mb-4")
-            | Giá:
-            b #{product.price}$
+            .card-body.p-4
+                .row
+                    .col-md-4.text-center.mb-4.mb-md-0
+                        if (product.thumbnail)
+                            .admin-img-wrapper.mb-3
+                                img.img-fluid(src=product.thumbnail alt=product.title)
+                        
+                        if (product.status)
+                            .status-box
+                                span.fw-bold.text-muted.me-2 Trạng thái:
+                                if (product.status === "active")
+                                    span.badge.bg-success.px-3.py-2 Hoạt động
+                                else
+                                    span.badge.bg-danger.px-3.py-2 Dừng hoạt động
 
-    if (product.discountPercentage)
-        div(class="mb-4")
-            | Giảm giá:
-            b #{product.discountPercentage}%
+                    .col-md-8
+                        .info-group.mb-4
+                            h5.text-pink.fw-bold Thông tin bán hàng
+                            hr.text-pink.opacity-25
+                            .row.g-3
+                                .col-sm-6
+                                    .stat-box
+                                        span.text-muted Giá gốc: 
+                                        strong.text-dark #{product.price}$
+                                .col-sm-6
+                                    .stat-box
+                                        span.text-muted Giảm giá: 
+                                        span.badge.bg-danger -#{product.discountPercentage}%
+                                .col-sm-6
+                                    .stat-box
+                                        span.text-muted Giá thực bán: 
+                                        - var newPrice = (product.price * (100 - product.discountPercentage) / 100).toFixed(0)
+                                        strong.text-danger.fs-5 #{newPrice}$
+                                .col-sm-6
+                                    .stat-box
+                                        span.text-muted Tồn kho: 
+                                        strong.text-dark #{product.stock} sản phẩm
+                                .col-sm-6
+                                    .stat-box
+                                        span.text-muted Vị trí hiển thị: 
+                                        strong.text-dark #{product.position}
 
-    if (product.stock)
-        div(class="mb-4")
-            | Còn lại:
-            b #{product.stock}
+                        .info-group.mb-4
+                            h5.text-pink.fw-bold Lịch sử tạo
+                            hr.text-pink.opacity-25
+                            .row.g-3
+                                if (product.createdBy)
+                                    .col-sm-6
+                                        .stat-box
+                                            span.text-muted Người tạo: 
+                                            strong.text-dark #{product.userFullName}
+                                    .col-sm-6
+                                        .stat-box
+                                            span.text-muted Thời gian: 
+                                            strong.text-dark 
+                                                +formatDateTime(product.createdBy.createdAt)
 
-    if (product.thumbnail)
-        div(class="mb-4")
-            img(
-                src=product.thumbnail
-                style="width: 100px"
-            )
+                if (product.description)
+                    .row.mt-4
+                        .col-12
+                            .info-group
+                                h5.text-pink.fw-bold Nội dung mô tả
+                                hr.text-pink.opacity-25
+                                .desc-box.bg-light.p-4.rounded.border
+                                    | !{product.description}
 
-    if (product.status)
-        div(class="mb-4")
-            span Trạng thái:
-
-            if (product.status === "active")
-                span(class="badge text-bg-success") Hoạt động
-            else
-                span(class="badge text-bg-danger") Dừng hoạt động
-
-    if (product.position)
-        div(class="mb-4")
-            | Vị trí:
-            b #{product.position}
-
-    if (product.description)
-        div(class="mb-4")
-            | !{product.description}
-
-    if (role.permissions.includes("products_edit"))
-        a(
-            href=`${prefixAdmin}/products/edit/${product.id}`
-            class="btn btn-warning"
-        ) Chỉnh sửa
-
-    script(src="/admin/js/product.js") 
+    script(src="/admin/js/product.js")

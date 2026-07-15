@@ -276,3 +276,66 @@ body {
     color: #dc3545;
     transform: translateY(-50%) scale(1.1);
 }
+
+/* =========================================
+   8. TRANG CHI TIẾT SẢN PHẨM (ADMIN)
+========================================= */
+
+.product-admin-card {
+    border: 2px dashed #ffccdf;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(232, 62, 140, 0.05);
+}
+
+.text-pink {
+    color: #d63384 !important;
+}
+
+/* Khung bọc hình ảnh bên Admin */
+.admin-img-wrapper {
+    background-color: #fffafc;
+    border: 2px dashed #ffccdf;
+    border-radius: 12px;
+    padding: 15px;
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+}
+
+.admin-img-wrapper img {
+    max-height: 250px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* Hộp chứa từng dòng thông số */
+.stat-box {
+    background-color: #f8f9fa;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border-left: 4px solid #ffccdf;
+    font-size: 15px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stat-box .text-muted {
+    margin-right: 10px;
+}
+
+/* Hộp chứa nội dung mô tả TinyMCE */
+.desc-box {
+    background-color: #fffdf5 !important;
+    border: 1px solid #ffede6 !important;
+    color: #495057;
+    line-height: 1.8;
+}
+
+.desc-box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 10px 0;
+}

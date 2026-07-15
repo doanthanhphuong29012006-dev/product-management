@@ -244,6 +244,11 @@ module.exports.detail = async (req, res) => {
 
         const product = await Product.findOne(find);
 
+        if (product.createdBy) {
+            const user = await Account.findOne({ _id: product.createdBy.account_id });
+            product.userFullName = user.fullName;
+        }
+
         res.render('admin/pages/products/detail', {
             pageTitle: product.title,
             product: product
