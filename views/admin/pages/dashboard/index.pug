@@ -3,3 +3,8 @@ extends ../../layouts/default.pug
 block main
     a.text-decoration-none.text-dark(href="/") 
         h1.mb-4 Trang tổng quan
+    
+    div #{user}
+    div ----------------------
+    div #{role.title}
+    div #{role.permissions}

@@ -1,89 +1,103 @@
 extends ../../layouts/default.pug
 
 block main
-    h1.mb-4 Danh sách tài khoản
+    if (role.permissions.includes("accounts_view"))
+        h1.mb-4 Danh sách tài khoản
 
-    .card.mb-3
-        .card-header Danh sách
+        .card.mb-3
+            .card-header Danh sách
 
-        .card-body
-            .row
-                .col-8
+            .card-body
+                .row
+                    .col-8
 
-                .col-4.text-end
-                    a.btn.btn-outline-success(
-                        href=`${prefixAdmin}/accounts/create`
+                    .col-4.text-end
+                        if (role.permissions.includes("accounts_create"))
+                            a.btn.btn-outline-success(
+                                href=`${prefixAdmin}/accounts/create`
+                            )
+                                | + Thêm mới
+
+                table(
+                        class="table table-hover table-sm align-middle"
+                        checkbox-multi
                     )
-                        | + Thêm mới
 
-            table(
-                    class="table table-hover table-sm align-middle"
-                    checkbox-multi
-                )
-
-                    thead
-                        tr
-                            th STT
-                            th Avatar
-                            th Họ tên
-                            th Phân quyền
-                            th Email
-                            th Trạng thái
-                            th Hành động
-
-                    tbody
-                        each item, index in records
-
+                        thead
                             tr
-                                td #{index + 1}
+                                th STT
+                                th Avatar
+                                th Họ tên
+                                th Phân quyền
+                                th Email
+                                th Trạng thái
+                                th Hành động
 
-                                td
-                                    img(
-                                        src=item.avatar
-                                        alt=item.fullName
-                                        width="100"
-                                    )
+                        tbody
+                            each item, index in records
 
-                                td #{item.fullName}
+                                tr
+                                    td #{index + 1}
 
-                                td #{item.role.title}
+                                    td
+                                        img(
+                                            src=item.avatar
+                                            alt=item.fullName
+                                            width="100"
+                                        )
 
-                                td #{item.email}
+                                    td #{item.fullName}
 
-                                td
-                                    if (item.status === "active")
+                                    td #{item.role.title}
+
+                                    td #{item.email}
+
+                                    td
+                                        if (role.permissions.includes("accounts_edit"))
+                                            if (item.status === "active")
+                                                a(
+                                                    href="javascript:;"
+                                                    data-status=item.status
+                                                    data-id=item.id 
+                                                    button-change-status 
+                                                    class="btn btn-success btn-sm"
+                                                ) Hoạt động
+                                            else 
+                                                a(
+                                                    href="javascript:;"
+                                                    data-status=item.status
+                                                    data-id=item.id 
+                                                    button-change-status 
+                                                    class="btn btn-danger btn-sm"
+                                                ) Dừng hoạt động
+                                        else 
+                                            if (item.status === "active")
+                                                a(
+                                                    class="btn btn-success btn-sm"
+                                                ) Hoạt động
+                                            else 
+                                                a(
+                                                    class="btn btn-danger btn-sm"
+                                                ) Dừng hoạt động
+
+                                    td
                                         a(
-                                            href="javascript:;"
-                                            data-status=item.status
-                                            data-id=item.id 
-                                            button-change-status 
-                                            class="btn btn-success btn-sm"
-                                        ) Hoạt động
-                                    else 
-                                        a(
-                                            href="javascript:;"
-                                            data-status=item.status
-                                            data-id=item.id 
-                                            button-change-status 
-                                            class="btn btn-danger btn-sm"
-                                        ) Dừng hoạt động
+                                            href=`${prefixAdmin}/accounts/detail/${item.id}`
+                                            class="btn btn-secondary btn-sm"
+                                        ) Chi tiết
 
-                                td
-                                    a(
-                                        href=`${prefixAdmin}/accounts/detail/${item.id}`
-                                        class="btn btn-secondary btn-sm"
-                                    ) Chi tiết
+                                        if (role.permissions.includes("accounts_edit"))
+                                            a(
+                                                href=`${prefixAdmin}/accounts/edit/${item.id}`
+                                                class="btn btn-warning btn-sm ms-1"
+                                            ) Sửa
 
-                                    a(
-                                        href=`${prefixAdmin}/accounts/edit/${item.id}`
-                                        class="btn btn-warning btn-sm ms-1"
-                                    ) Sửa
-
-                                    button(
-                                        class="btn btn-danger btn-sm ms-1"
-                                        data-id=item.id
-                                        button-delete
-                                    ) Xóa
+                                        if (role.permissions.includes("accounts_delete"))
+                                            button(
+                                                class="btn btn-danger btn-sm ms-1"
+                                                data-id=item.id
+                                                button-delete
+                                            ) Xóa
 
     form(
         action=""

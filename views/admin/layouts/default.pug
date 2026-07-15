@@ -9,12 +9,15 @@ html
         title #{pageTitle} 
 
     body 
-        include ../partials/header.pug
-        .body 
-            include ../partials/sider.pug 
+        if (role.permissions.length > 0)
+            include ../partials/header.pug
+            .body 
+                include ../partials/sider.pug 
 
-            .main 
-                block main
+                .main 
+                    block main
+        else 
+            include ../pages/errors/404.pug
 
     //- TinyMCE
     script(src="https://cdn.tiny.cloud/1/2nujizgf04p41obiw1m88wt6hfqohdgog20h4vqnnqhzypbt/tinymce/7/tinymce.min.js" referrerpolicy="origin")

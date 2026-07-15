@@ -28,10 +28,11 @@ block main
                         .empty-text Nhóm quyền này chưa được cấp bất kỳ quyền hạn nào.
 
                 .action-buttons.mt-5
-                    a(
-                        href=`${prefixAdmin}/roles/edit/${record.id}` 
-                        class="btn btn-edit-pink me-2"
-                    ) Chỉnh sửa
+                    if (role.permissions.includes("roles_edit"))
+                        a(
+                            href=`${prefixAdmin}/roles/edit/${record.id}` 
+                            class="btn btn-edit-pink me-2"
+                        ) Chỉnh sửa
                     
                     a(
                         href=`${prefixAdmin}/roles` 
