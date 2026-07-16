@@ -35,6 +35,29 @@ block main
                 if (category)
                     +select-tree(category)
 
+        .form-check.form-check-inline.mb-3
+            input.form-check-input(
+                type="radio"
+                id="feature1"
+                name="feature"
+                value="1"
+            )
+
+            label.form-check-label(for="statusActive")
+                | Nổi bật
+
+        .form-check.form-check-inline.mb-3
+            input.form-check-input(
+                type="radio"
+                id="feature0"
+                name="feature"
+                value="0"
+                checked
+            )
+
+            label.form-check-label(for="statusInActive")
+                | Không
+
         .mb-3
             label.form-label(for="desc") Mô tả
 
