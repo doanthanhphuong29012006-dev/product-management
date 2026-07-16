@@ -8,6 +8,7 @@ const productCategoryRoutes = require('./product-category.route');
 const roleRoutes = require('./role.route');
 const accountRoutes = require('./account.route');
 const authRoutes = require('./auth.route');
+const myAccountRoutes = require('./my-account.route');
 
 module.exports = (app) => {
     const PATH_ADMIN = systemConfig.prefixAdmin;
@@ -41,11 +42,17 @@ module.exports = (app) => {
         accountRoutes
     );
 
+    app.use(
+        PATH_ADMIN + '/my-account', 
+        authMiddleware.requireAuth, 
+        myAccountRoutes
+    );
+
     app.use(PATH_ADMIN + '/auth', authRoutes);
 
-//     app.use('*', (req, res) => {
-//         res.status(404).render('admin/pages/errors/404', {
-//             pageTitle: "404 Không tìm thấy trang"
-//         });
-//     });
+    // app.use('*', (req, res) => {
+    //     res.status(404).render('admin/pages/errors/404', {
+    //         pageTitle: "404 Không tìm thấy trang"
+    //     });
+    // });
 }

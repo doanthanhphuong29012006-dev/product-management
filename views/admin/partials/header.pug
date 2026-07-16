@@ -9,7 +9,18 @@ header.header
                         span ADMIN
 
             .col-9
-                .text-end
+                .text-end.d-flex.align-items-center.justify-content-end
+                    
+                    if (user)
+                        .user-info.me-3
+                            a(href=`${prefixAdmin}/my-account` class="d-flex align-items-center user-link")
+                                img.user-avatar(
+                                    src=(user.avatar ? user.avatar : "/images/pig-logo1.png") 
+                                    alt=user.fullName
+                                    onerror="this.src='/images/pig-logo1.png'"
+                                )
+                                span.user-name.ms-2 #{user.fullName}
+
                     a.btn.btn-logout-pink.btn-sm(
                         href=`${prefixAdmin}/auth/logout`
                     ) Đăng xuất

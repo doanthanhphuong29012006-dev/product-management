@@ -339,3 +339,39 @@ body {
     border-radius: 8px;
     margin: 10px 0;
 }
+
+/* =========================================
+   THÔNG TIN TÀI KHOẢN (HEADER)
+========================================= */
+
+.user-info .user-link {
+    text-decoration: none;
+    padding: 4px 14px 4px 4px;
+    background-color: #fff0f5;
+    border-radius: 50px;
+    border: 1px solid #ffccdf;
+    transition: all 0.3s ease;
+}
+
+.user-info .user-link:hover {
+    background-color: #ffe6f2;
+    border-color: #ff99cc;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(232, 62, 140, 0.15);
+}
+
+.user-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 4px rgba(232, 62, 140, 0.2);
+    background-color: #ffffff;
+}
+
+.user-name {
+    color: #d63384;
+    font-weight: 700;
+    font-size: 14px;
+}
