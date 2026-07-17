@@ -189,7 +189,7 @@ block main {
 .product-item .inner-discount {
     position: absolute;
     top: 12px;
-    right: 12px;
+    left: 12px;
     background: #e83e8c;
     color: #ffffff;
     font-size: 14px;
@@ -251,6 +251,18 @@ block main {
     font-weight: 500;
     color: #adb5bd;
     text-decoration: line-through;
+}
+
+.product-item .inner-featured {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: green;
+    color: white;
+    padding: 3px 6px;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 8px;
 }
 
 /* Sub-menu */
