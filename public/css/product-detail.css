@@ -146,3 +146,57 @@
 .desc-content p {
     margin-bottom: 10px;
 }
+
+/* ==================== STYLE CHO DANH MỤC ==================== */
+.inner-category {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.category-link {
+    color: #e83e8c;
+    text-decoration: none;
+    font-weight: 700;
+    background-color: #ffe6f2;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1px dashed #ffccdf;
+    transition: all 0.3s ease;
+}
+
+.category-link:hover {
+    background-color: #e83e8c;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(232, 62, 140, 0.2);
+}
+
+/* ==================== STYLE Ô NHẬP SỐ LƯỢNG ==================== */
+.input-quantity {
+    width: 90px !important; /* Ép thu nhỏ ô input lại */
+    height: 54px; /* Cao bằng nút thêm vào giỏ hàng */
+    border: 2px solid #ffccdf;
+    border-radius: 50px; /* Bo tròn giống nút bấm */
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: #d63384;
+    background-color: #fffafc;
+    transition: all 0.3s ease;
+}
+
+.input-quantity:focus {
+    border-color: #e83e8c;
+    box-shadow: 0 0 0 4px rgba(232, 62, 140, 0.15);
+    outline: none;
+    background-color: #ffffff;
+}
+
+/* Fix lỗi nút giỏ hàng bị lệch nếu còn margin cũ */
+.btn-cart-pink {
+    margin-bottom: 0 !important; 
+    height: 54px;
+    display: flex;
+    align-items: center;
+}

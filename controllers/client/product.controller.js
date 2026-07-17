@@ -13,7 +13,7 @@ module.exports.index = async (req, res) => {
     })
     .sort({ position: "desc" });
 
-    const newProducts = productHelper.newProductPrice(products);
+    const newProducts = productHelper.newProductsPrice(products);
 
     res.render('client/pages/products/index', {
         pageTitle: "Danh sách sản phẩm",
@@ -21,16 +21,28 @@ module.exports.index = async (req, res) => {
     });
 };
 
-// [GET] /products/:slug
+// [GET] /products/detail/:slugProduct
 module.exports.detail = async (req, res) => {
     try {
         const find = {
             deleted: false,
-            slug: req.params.slug,
+            slug: req.params.slugProduct,
             status: "active"
         }
 
         const product = await Product.findOne(find);
+
+        if (product.product_category_id) {
+            const category = await ProductCategory.findOne({
+                deleted: false,
+                status: "active",
+                _id: product.product_category_id
+            });
+
+            product.category = category;
+        }
+
+        product.newPrice = productHelper.newProductPrice(product); 
 
         res.render('client/pages/products/detail', {
             pageTitle: product.title,
@@ -57,7 +69,7 @@ module.exports.category = async (req, res) => {
         product_category_id: { $in: [category.id, ...listSubCategoryId] }
     }).sort({ position: "desc" });
 
-    const newProducts = productHelper.newProductPrice(products);
+    const newProducts = productHelper.newProductsPrice(products);
 
     res.render('client/pages/products/index', {
         pageTitle: category.title,

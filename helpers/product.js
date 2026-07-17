@@ -1,4 +1,4 @@
-module.exports.newProductPrice= (products) => {
+module.exports.newProductsPrice= (products) => {
     const newProducts = products.map((item) => {
         item.newPrice = (item.price * (100 - item.discountPercentage) / 100).toFixed(0);
 
@@ -6,4 +6,10 @@ module.exports.newProductPrice= (products) => {
     });
 
     return newProducts;
+}
+
+module.exports.newProductPrice= (product) => {
+    newPrice = (product.price * (100 - product.discountPercentage) / 100).toFixed(0);
+
+    return newPrice;
 }

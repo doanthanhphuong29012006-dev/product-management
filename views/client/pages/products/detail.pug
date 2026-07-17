@@ -21,11 +21,15 @@ block main
                         if (product.title)
                             h1.product-title #{product.title}
 
+                        if (product.category)
+                            .inner-category.mb-4
+                                span.text-muted.fw-bold.me-2 🏷️ Danh mục:
+                                a.category-link(href=`/products/${product.category.slug}`) #{product.category.title}
+
                         .product-price-box
                             if (product.price)
                                 if (product.discountPercentage)
-                                    - var newPrice = (product.price * (100 - product.discountPercentage) / 100).toFixed(0)
-                                    span.price-new #{newPrice}$
+                                    span.price-new #{product.newPrice}$
                                     span.price-old #{product.price}$
                                 else
                                     span.price-new #{product.price}$
@@ -40,9 +44,20 @@ block main
                                 .stat-item
                                     span.stat-label 📍 Vị trí:
                                     span.stat-value #{product.position}
-
-                        .action-buttons
-                            button.btn.btn-cart-pink Thêm vào giỏ hàng 🛒
+                        
+                        form(
+                            action=`/cart/add/${product.id}`
+                            method="POST"
+                        )
+                            .d-flex.align-items-center.gap-3.mb-4
+                                input.form-control.input-quantity(
+                                    type="number"
+                                    name="quantity"
+                                    value="1"
+                                    min="1"
+                                    max=product.stock
+                                )
+                                button.btn.btn-cart-pink.m-0(type="submit") Thêm vào giỏ hàng 🛒
 
                         if (product.description)
                             .product-desc
