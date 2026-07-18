@@ -10,7 +10,25 @@ header.header
                         img(src="/images/pig-logo1.png", alt="Logo")
                         span.fw-bold.ms-2.text-pink ShoPhuongDT
 
-            .col-8
+            .col-4
+                form(
+                    action="/search"
+                    method="GET"
+                )
+                    div(class="form-group d-flex mb-0")
+                        input(
+                            type="text"
+                            placeholder="Nhập từ khóa..."
+                            class="form-control"
+                            name="keyword"
+                        )
+
+                        button(
+                            type="submit"
+                            class="btn btn-primary"
+                        ) Tìm
+
+            .col-4
                 .inner-menu
                     ul
                         li
