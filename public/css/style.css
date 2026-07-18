@@ -265,8 +265,43 @@ block main {
     border-radius: 8px;
 }
 
-/* Sub-menu */
+/* ==================== THANH TÌM KIẾM (SEARCH BOX) ==================== */
+.search-box-pink {
+    box-shadow: 0 4px 10px rgba(232, 62, 140, 0.05);
+    border-radius: 25px; /* Bo tròn hoàn toàn */
+    overflow: hidden;
+}
 
+.search-box-pink .form-control {
+    border: 2px solid #ffccdf;
+    border-right: none;
+    border-radius: 25px 0 0 25px;
+    padding: 10px 20px;
+    box-shadow: none;
+}
+
+.search-box-pink .form-control:focus {
+    border-color: #e83e8c;
+    background-color: #fffafc;
+}
+
+.btn-search-pink {
+    background-color: #e83e8c;
+    color: white;
+    border: 2px solid #e83e8c;
+    border-radius: 0 25px 25px 0;
+    padding: 0 25px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-search-pink:hover {
+    background-color: #d63384;
+    border-color: #d63384;
+    color: white;
+}
+
+/* ==================== SUB-MENU (MENU CON) ==================== */
 .sub-menu {
     position: relative;
     z-index: 999;
@@ -274,51 +309,86 @@ block main {
 
 .sub-menu ul {
     position: absolute;
-    right: 0;
+    left: 0; /* Đổi từ right: 0 thành left: 0 để mở sang phải */
     top: 100%;
     list-style: none;
-    padding: 0;
+    padding: 10px 0;
     margin: 0;
-    background: #ea9e90;
-    min-width: 180px;
+    background: #ffffff; /* Nền trắng sữa thay vì cam gạch */
+    min-width: 220px;
     display: none;
-}
-
-.sub-menu ul li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+    border: 2px dashed #ffccdf;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(232, 62, 140, 0.15);
 }
 
 .sub-menu:hover > ul {
     display: block;
+    animation: fadeInDown 0.3s ease; /* Thêm hiệu ứng trượt nhẹ xuống */
 }
 
 .sub-menu ul li {
     position: relative;
+    padding: 0;
+    border-bottom: none;
 }
 
+.sub-menu ul li a {
+    display: block;
+    padding: 10px 20px;
+    color: #d63384;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.sub-menu ul li a:hover {
+    background-color: #ffe6f2;
+    color: #e83e8c;
+    padding-left: 28px; /* Thụt lề nhẹ vào trong khi hover */
+}
+
+/* Sub-menu đa cấp (Mở sang bên phải) */
 .sub-menu ul li ul {
-    right: -100%;
-    top: 0;
+    left: 100%; /* Đổi từ right: -100% thành left: 100% */
+    top: -10px; /* Căn ngang hàng với item cha */
 }
 
 .sub-menu ul li:hover > ul {
     display: block;
 }
 
-/* End Sub-menu */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
 /* =========================================
-    THÔNG BÁO (ALERTS)
+    THÔNG BÁO (ALERTS) CUSTOM UI
 ========================================= */
 [show-alert] {
     position: fixed;
-    top: 80px;
+    top: 90px;
     right: 20px;
     z-index: 9999;
-    padding-right: 40px !important;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 15px 45px 15px 20px !important;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(232, 62, 140, 0.2);
+    font-weight: 600;
+    border: none;
+}
+
+/* Bóp lại style của Bootstrap */
+.alert-success {
+    background-color: #ffe6f2 !important; /* Nền hồng nhạt */
+    color: #d63384 !important;
+    border-left: 6px solid #e83e8c !important; /* Vạch kẻ nổi bật bên trái */
+}
+
+.alert-danger {
+    background-color: #fff0f0 !important;
+    color: #dc3545 !important;
+    border-left: 6px solid #dc3545 !important;
 }
 
 [show-alert].alert-hidden {
@@ -326,31 +396,30 @@ block main {
 }
 
 @keyframes alert-hidden {
-    from { right: 20px; }
-    to { right: -100%; display: none; }
+    from { right: 20px; opacity: 1; }
+    to { right: -100%; opacity: 0; display: none; }
 }
 
+/* Dấu X tắt thông báo */
 [show-alert] [close-alert] {
     position: absolute;
     top: 50%;
-    right: 10px;
+    right: 12px;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.4);
-    color: #333;
+    background: transparent;
+    color: inherit;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 26px;
-    height: 26px;
-    font-size: 14px;
-    font-weight: bold;
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.25s ease-in-out;
+    transition: all 0.2s ease;
 }
 
 [show-alert] [close-alert]:hover {
-    background: rgba(255, 255, 255, 0.9);
-    color: #dc3545;
+    background: rgba(0, 0, 0, 0.08);
     transform: translateY(-50%) scale(1.1);
 }
