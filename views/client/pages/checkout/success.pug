@@ -2,7 +2,68 @@ extends ../../layouts/default.pug
 include ../../mixins/box-head.pug
 
 block main
-    .container.my-3
-        .row
-            .col-12
-                +box-head("Đặt hàng thành công")
+    .container.my-5
+        .row.justify-content-center
+            .col-lg-8
+
+                .success-banner-card.text-center.mb-4
+                    .success-pig-icon 🎉🐷🎉
+                    h2.success-title Đặt hàng thành công!
+                    p.success-desc Cảm ơn bạn đã tin tưởng mua sắm. Đơn hàng của bạn đã được ghi nhận và sẽ được xử lý trong thời gian sớm nhất.
+                    
+                    .mt-4
+                        a.btn.btn-hero-pink.me-3(href="/products") Tiếp tục mua sắm
+                        a.btn.btn-outline-pink(href="/") Về trang chủ
+
+                if (order)
+                    .checkout-card.p-4.mb-4
+                        h4.checkout-title 
+                            i.fas.fa-user-circle.me-2 
+                            | Thông tin nhận hàng
+                        
+                        .row.g-3.mb-4
+                            .col-md-4
+                                .info-box-success
+                                    span.text-muted Họ tên người nhận
+                                    strong.d-block.text-dark #{order.userInfo.fullName}
+                            .col-md-4
+                                .info-box-success
+                                    span.text-muted Số điện thoại
+                                    strong.d-block.text-dark #{order.userInfo.phone}
+                            .col-md-4
+                                .info-box-success
+                                    span.text-muted Địa chỉ giao hàng
+                                    strong.d-block.text-dark #{order.userInfo.address}
+
+                        h4.checkout-title.mt-4 
+                            i.fas.fa-box-open.me-2 
+                            | Chi tiết đơn hàng
+
+                        .table-responsive
+                            table.table.table-borderless.cart-table.align-middle.mb-0
+                                thead
+                                    tr
+                                        th.text-center STT
+                                        th Ảnh
+                                        th Tên sản phẩm
+                                        th.text-center Đơn giá
+                                        th.text-center Số lượng
+                                        th.text-end Thành tiền
+                                tbody
+                                    if (order.products && order.products.length > 0)
+                                        each item, index in order.products
+                                            tr
+                                                td.text-center.fw-bold.text-muted #{index + 1}
+                                                td
+                                                    img.cart-img(
+                                                        src=item.productInfo.thumbnail
+                                                        alt=item.productInfo.title
+                                                    )
+                                                td.fw-bold.text-dark #{item.productInfo.title}
+                                                td.text-center.text-pink.fw-bold #{item.newPrice}$
+                                                td.text-center.fw-bold #{item.quantity}
+                                                td.text-end.text-danger.fw-bold.fs-5 #{item.totalPrice}$
+
+                        .checkout-total-box.mt-4
+                            span.total-label Tổng thanh toán:
+                            span.total-price.text-danger #{order.totalPrice}$
