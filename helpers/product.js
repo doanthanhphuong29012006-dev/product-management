@@ -11,5 +11,5 @@ module.exports.newProductsPrice= (products) => {
 module.exports.newProductPrice= (product) => {
     newPrice = (product.price * (100 - product.discountPercentage) / 100).toFixed(0);
 
-    return newPrice;
+    return parseInt(newPrice);
 }
