@@ -1,0 +1,93 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+include ../../mixins/alert.pug
+
+block main
+    +alert-success(5000)
+    +alert-error(5000)
+
+    .container.my-5
+        .row.mb-4
+            .col-12
+                +box-head("Hoàn tất đơn hàng")
+
+        if (cartDetail.products.length > 0)
+            .row
+                .col-lg-6.mb-4
+                    .checkout-card
+                        h4.checkout-title Thông tin giao hàng
+                        form(
+                            action="/checkout/order"
+                            method="POST"
+                        )
+                            .mb-3
+                                label.form-label.fw-bold.text-pink(for="fullName") Họ và tên
+                                input.form-control.input-pink(
+                                    type="text"
+                                    id="fullName"
+                                    name="fullName"
+                                    placeholder="Nhập họ tên người nhận..."
+                                    required
+                                )
+
+                            .mb-3
+                                label.form-label.fw-bold.text-pink(for="phone") Số điện thoại
+                                input.form-control.input-pink(
+                                    type="text"
+                                    id="phone"
+                                    name="phone"
+                                    placeholder="Nhập số điện thoại liên hệ..."
+                                    required
+                                )
+
+                            .mb-3
+                                label.form-label.fw-bold.text-pink(for="address") Địa chỉ nhận hàng
+                                input.form-control.input-pink(
+                                    type="text"
+                                    id="address"
+                                    name="address"
+                                    placeholder="Số nhà, tên đường, phường/xã, quận/huyện..."
+                                    required
+                                )
+
+                            button.btn.btn-checkout-pink.w-100.mt-4(
+                                type="submit"
+                            ) XÁC NHẬN ĐẶT HÀNG
+
+                .col-lg-6
+                    .checkout-card.summary-card
+                        h4.checkout-title Tóm tắt đơn hàng
+                        .table-responsive
+                            table.table.table-borderless.cart-table.align-middle.mb-0
+                                thead
+                                    tr
+                                        th Sản phẩm
+                                        th.text-center SL
+                                        th.text-end Thành tiền
+                                tbody
+                                    each item in cartDetail.products
+                                        tr
+                                            td
+                                                .d-flex.align-items-center
+                                                    img.cart-img-mini.me-3(
+                                                        src=item.productInfo.thumbnail
+                                                        alt=item.productInfo.title
+                                                    )
+                                                    span.fw-bold.text-muted #{item.productInfo.title}
+                                            td.text-center.fw-bold.text-dark x#{item.quantity}
+                                            td.text-end.fw-bold.text-pink #{item.totalPrice}$
+
+                        .checkout-total-box.mt-4
+                            span.total-label Tổng cộng:
+                            span.total-price.text-danger #{cartDetail.totalPrice}$
+
+        else
+            .row
+                .col-12
+                    .cart-card.text-center.py-5
+                        .empty-cart-msg
+                            span.fs-1 🐷
+                            p.mt-2.text-muted Bạn chưa chọn món đồ nào để thanh toán cả!
+                            a.btn.btn-hero-pink.mt-3(href="/products") Mua sắm ngay
+
+    script(src="/js/cart.js")

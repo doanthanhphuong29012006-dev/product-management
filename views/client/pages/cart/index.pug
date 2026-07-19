@@ -6,69 +6,77 @@ block main
     +alert-success(5000)
     +alert-error(5000)
 
-    .container.my-3
+    .container.my-5
+        .row.mb-4
+            .col-12
+                +box-head("Giỏ hàng của bạn")
+
         .row
             .col-12
-                +box-head("Giỏ hàng")
+                .cart-card
+                    table(class="table table-borderless cart-table align-middle mb-0")
+                        thead
+                            tr
+                                th.text-center STT
+                                th Ảnh
+                                th Tên sản phẩm
+                                th Đơn giá
+                                th.text-center Số lượng
+                                th Tổng tiền
+                                th.text-center Hành động
 
-        .row
-            .col-12
-                table(class="table table-bordered")
-                    thead
-                        tr
-                            th STT
-                            th Ảnh
-                            th Tên
-                            th Giá
-                            th Số lượng
-                            th Tổng tiền
-                            th Hành động
+                        tbody
+                            if (cartDetail.products.length > 0)
+                                each item, index in cartDetail.products
+                                    tr
+                                        td.text-center.fw-bold.text-muted #{index + 1}
+                                        
+                                        td
+                                            img.cart-img(
+                                                src=item.productInfo.thumbnail
+                                                alt=item.productInfo.title
+                                            )
 
-                    tbody
-                        if (cartDetail.products.length > 0)
-                            each item, index in cartDetail.products
-                                tr
-                                    td #{index + 1}
+                                        td
+                                            a.cart-title-link(href=`/products/detail/${item.productInfo.slug}`) #{item.productInfo.title}
 
-                                    td
-                                        img(
-                                            src=item.productInfo.thumbnail
-                                            alt=item.productInfo.title
-                                            width="80px"
-                                        )
+                                        td.fw-bold.text-pink #{item.productInfo.newPrice}$
 
-                                    td
-                                        a(href=`/products/detail/${item.productInfo.slug}`) #{item.productInfo.title}
+                                        td.text-center
+                                            input.cart-input-qty(
+                                                type="number"
+                                                name="quantity"
+                                                value=item.quantity
+                                                min="1"
+                                                product-id=item.product_id
+                                            )
 
-                                    td #{item.productInfo.newPrice}$
+                                        td.fw-bold.text-danger.fs-5 #{item.totalPrice}$
 
-                                    td
-                                        input(
-                                            type="number"
-                                            name="quantity"
-                                            value=item.quantity
-                                            min="1"
-                                            product-id=item.product_id
-                                            style="width: 60px"
-                                        )
-
-                                    td #{item.totalPrice}$
-
-                                    td
-                                        a(
-                                            href=`/cart/delete/${item.product_id}`
-                                            class="btn btn-danger"
-                                        ) Xóa
+                                        td.text-center
+                                            a.btn.btn-delete-pink(
+                                                href=`/cart/delete/${item.product_id}`
+                                            ) Xóa
 
                             else 
-                                p Không có sản phẩm nào trong giỏ hàng.
+                                tr
+                                    td(colspan="7" class="text-center py-5")
+                                        .empty-cart-msg
+                                            span.fs-1 🐷
+                                            p.mt-2.text-muted Giỏ hàng đang trống trơn! Bé heo đói bụng...
+                                            a.btn.btn-hero-pink.mt-3(href="/products") Mua sắm ngay
 
-                h3.text-end
-                    | Tổng đơn hàng: #{cartDetail.totalPrice}$
+        if (cartDetail.products.length > 0)
+            .row.mt-4
+                .col-12
+                    .cart-summary-box
+                        h3.total-text
+                            | Tổng đơn hàng: 
+                            span.total-price #{cartDetail.totalPrice}$
+                        
+                        div.mt-4
+                            a.btn.btn-checkout-pink(
+                                href="/checkout"
+                            ) TIẾN HÀNH THANH TOÁN
 
-                div.text-end.mt-3
-                    a.btn.btn-success(
-                        href="/checkout"
-                    ) THANH TOÁN
-
-    script(src="/js/cart.js") 
+    script(src="/js/cart.js")
