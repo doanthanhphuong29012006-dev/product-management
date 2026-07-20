@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema(
         phone: String,
         avatar: String,
         status: {
-            String,
+            type: String,
             default: "active"
         },
         deleted: {
