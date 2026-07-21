@@ -6,37 +6,48 @@ block main
 
     .container.my-5
         .row.justify-content-center
-            .col-lg-6.col-md-8
-                h1.text-center.mb-4 Đăng ký tài khoản
+            .col-lg-5.col-md-7
+                .auth-card
+                    .text-center.mb-4
+                        h2.title-pink.mt-2 Đăng ký tài khoản
 
-                form(
-                    action="/user/register"
-                    method="POST"
-                )
-                    .mb-3
-                        label.form-label(for="fullName") Họ và tên
-                        input.form-control(
-                            type="text"
-                            id="fullName"
-                            name="fullName"
-                        )
+                    form(
+                        action="/user/register"
+                        method="POST"
+                    )
+                        .mb-3
+                            label.form-label.fw-bold.text-pink(for="fullName") Họ và tên
+                            input.form-control.input-pink(
+                                type="text"
+                                id="fullName"
+                                name="fullName"
+                                placeholder="Nhập họ và tên..."
+                                required
+                            )
 
-                    .mb-3
-                        label.form-label(for="email") Email
-                        input.form-control(
-                            type="email"
-                            id="email"
-                            name="email"
-                        )
+                        .mb-3
+                            label.form-label.fw-bold.text-pink(for="email") Email
+                            input.form-control.input-pink(
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Nhập email của bạn..."
+                                required
+                            )
 
-                    .mb-3
-                        label.form-label(for="password") Mật khẩu
-                        input.form-control(
-                            type="password"
-                            id="password"
-                            name="password"
-                        )
+                        .mb-3
+                            label.form-label.fw-bold.text-pink(for="password") Mật khẩu
+                            input.form-control.input-pink(
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="••••••••"
+                            )
 
-                    button.btn.btn-primary.w-100(
-                        type="submit"
-                    ) Đăng ký
+                        button.btn.btn-hero-pink.w-100.mt-4(
+                            type="submit"
+                        ) Đăng ký ngay
+
+                    .text-center.mt-4
+                        span.text-muted Đã có tài khoản? 
+                        a.register-link(href="/user/login") Đăng nhập tại đây
