@@ -375,3 +375,122 @@ body {
     font-weight: 700;
     font-size: 14px;
 }
+
+/* ==================== TRANG LỖI 404 ==================== */
+.sign-up-card {
+    background-color: #ffffff;
+    border: 2px dashed #ffccdf;
+    border-radius: 24px;
+    padding: 60px 40px;
+    box-shadow: 0 10px 30px rgba(232, 62, 140, 0.08);
+}
+
+.sign-up-icon {
+    font-size: 85px;
+    margin-bottom: 10px;
+    animation: bounce 2s infinite ease-in-out; 
+}
+
+.sign-up-code {
+    font-size: 120px;
+    font-weight: 900;
+    color: #ff6680;
+    margin: 0;
+    line-height: 1;
+    text-shadow: 6px 6px 0px #ffe6f2;
+    letter-spacing: 5px;
+}
+
+/* ==================== NÚT BẤM & TIÊU ĐỀ ==================== */
+.title-pink {
+    color: #d63384;
+    font-weight: 800;
+}
+
+.btn-hero-pink {
+    background-color: #e83e8c;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-hero-pink:hover {
+    background-color: #d63384;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(232, 62, 140, 0.3);
+}
+
+.btn-outline-pink {
+    background: transparent;
+    color: #e83e8c;
+    border: 2px solid #e83e8c;
+    padding: 8px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-outline-pink:hover {
+    background: #ffe6f2;
+    color: #d63384;
+    border-color: #d63384;
+    transform: translateY(-2px);
+}
+
+/* ==================== TRANG 404 (SIGN UP) ==================== */
+
+/* 1. Thêm nền gradient hồng nhẹ cho toàn bộ trang để tôn thẻ Card lên */
+body {
+    background: linear-gradient(135deg, #fffafc 0%, #ffe6f2 100%);
+    min-height: 100vh;
+}
+
+/* 2. Tăng độ đậm của bóng đổ (box-shadow) để Card nhìn nổi khối 3D hơn */
+.sign-up-card {
+    background-color: #ffffff;
+    border: 2px dashed #ffccdf;
+    border-radius: 24px;
+    padding: 60px 40px;
+    box-shadow: 0 15px 40px rgba(232, 62, 140, 0.15);
+}
+
+/* 3. Định nghĩa khung hình chuyển động (Keyframes) */
+.sign-up-icon {
+    margin-bottom: 15px;
+    animation: bounce 2s infinite ease-in-out; 
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* 4. Thêm hiệu ứng lơ lửng và bóng đổ động cho số 404 */
+.sign-up-code {
+    font-size: 120px;
+    font-weight: 900;
+    color: #ff6680;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: 5px;
+    animation: floatText 3s infinite ease-in-out;
+}
+
+@keyframes floatText {
+    0%, 100% { 
+        transform: translateY(0); 
+        text-shadow: 6px 6px 0px #ffe6f2; 
+    }
+    50% { 
+        transform: translateY(-8px); 
+        text-shadow: 12px 12px 0px #ffd9e8;
+    }
+}

@@ -55,7 +55,7 @@ module.exports.logout = (req, res) => {
 
 // [GET] /admin/auth/signup
 module.exports.signup = (req, res) => {
-    res.render('admin/pages/errors/404', {
+    res.render('admin/pages/auth/signup', {
         pageTitle: "Trang đăng ký"
     });
 };
