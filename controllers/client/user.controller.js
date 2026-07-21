@@ -1,6 +1,7 @@
 const md5 = require("md5");
 const User = require('../../models/user.model');
 const ForgotPassword = require('../../models/forgot-password.model');
+const Cart = require('../../models/cart.model');
 
 const generateHelper = require('../../helpers/generate');
 const sendMailHelper = require('../../helpers/sendMail');
@@ -75,6 +76,14 @@ module.exports.loginPost = async (req, res) => {
     }
 
     res.cookie("tokenUser", user.tokenUser);
+
+    if (req.cookies.cartId) {
+        await Cart.updateOne({
+            _id: req.cookies.cartId
+        }, {
+            user_id: user.id
+        });
+    }
 
     res.redirect("/");
 }
@@ -207,7 +216,11 @@ module.exports.edit = async (req, res) => {
 // [POST]/user/editPatch
 module.exports.editPatch = async (req, res) => {
     try {
-        await User.updateOne({ tokenUser: req.cookies.tokenUser }, req.body);
+        await User.updateOne({ tokenUser: req.cookies.tokenUser 
+
+        }, {
+            fullName, phone, avatar
+        });
         req.flash('success', "Cập nhật tài khoản thành công!");
     } catch (error) {
         req.flash('error', "Cập nhật tài khoản thất bại!");

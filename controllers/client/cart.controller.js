@@ -9,6 +9,13 @@ module.exports.index = async (req, res) => {
 
     const cart = await Cart.findOne({ _id: cartId });
 
+    if (!cart) {
+        return res.render('client/pages/cart/index', {
+            pageTitle: "Trang giỏ hàng",
+            cartDetail: { products: [], totalPrice: 0 }
+        });
+    }
+
     if (cart.products.length > 0) {
         for (const item of cart.products) {
             const productId = item.product_id;
@@ -42,6 +49,13 @@ module.exports.addPost = async (req, res) => {
     const cart = await Cart.findOne({
         _id: cartId
     });
+
+    if (!cart) {
+        req.flash('error', "Không tìm thấy giỏ hàng, vui lòng tải lại trang!");
+        const currentUrl = req.get('Referrer');
+        res.redirect(currentUrl);
+        return;
+    }
 
     const existProductInCart = cart.products.find(item => item.product_id === productId);
 
@@ -92,7 +106,7 @@ module.exports.delete = async (req, res) => {
 module.exports.update = async (req, res) => {
     const cartId = req.cookies.cartId;
     const productId = req.params.productId;
-    const quantity = req.params.quantity;
+    const quantity = parseInt(req.params.quantity);
 
     await Cart.updateOne({
         _id: cartId,
