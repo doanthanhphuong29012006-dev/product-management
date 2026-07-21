@@ -26,26 +26,26 @@ block main
 
                         if (product.category)
                             .inner-category.mb-4
-                                span.text-muted.fw-bold.me-2 🏷️ Danh mục:
+                                span.text-muted.fw-bold.me-2 Danh mục:
                                 a.category-link(href=`/products/${product.category.slug}`) #{product.category.title}
 
                         .product-price-box
                             if (product.price)
                                 if (product.discountPercentage)
-                                    span.price-new #{product.newPrice}$
-                                    span.price-old #{product.price}$
+                                    span.price-new #{product.newPrice}đ
+                                    span.price-old #{product.price}đ
                                 else
-                                    span.price-new #{product.price}$
+                                    span.price-new #{product.price}đ
 
                         .product-stats
                             if (product.stock)
                                 .stat-item
-                                    span.stat-label 📦 Kho:
+                                    span.stat-label Kho:
                                     span.stat-value #{product.stock} sản phẩm
                                     
                             if (product.position)
                                 .stat-item
-                                    span.stat-label 📍 Vị trí:
+                                    span.stat-label Vị trí:
                                     span.stat-value #{product.position}
                         
                         form(
@@ -60,7 +60,7 @@ block main
                                     min="1"
                                     max=product.stock
                                 )
-                                button.btn.btn-cart-pink.m-0(type="submit") Thêm vào giỏ hàng 🛒
+                                button.btn.btn-cart-pink.m-0(type="submit") Thêm vào giỏ hàng
 
                         if (product.description)
                             .product-desc

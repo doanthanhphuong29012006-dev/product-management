@@ -75,18 +75,17 @@ block main
                                                     )
                                                     span.fw-bold.text-muted #{item.productInfo.title}
                                             td.text-center.fw-bold.text-dark x#{item.quantity}
-                                            td.text-end.fw-bold.text-pink #{item.totalPrice}$
+                                            td.text-end.fw-bold.text-pink #{item.totalPrice}đ
 
                         .checkout-total-box.mt-4
                             span.total-label Tổng cộng:
-                            span.total-price.text-danger #{cartDetail.totalPrice}$
+                            span.total-price.text-danger #{cartDetail.totalPrice}đ
 
         else
             .row
                 .col-12
                     .cart-card.text-center.py-5
                         .empty-cart-msg
-                            span.fs-1 🐷
                             p.mt-2.text-muted Bạn chưa chọn món đồ nào để thanh toán cả!
                             a.btn.btn-hero-pink.mt-3(href="/products") Mua sắm ngay
 

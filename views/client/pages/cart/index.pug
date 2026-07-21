@@ -40,7 +40,7 @@ block main
                                         td
                                             a.cart-title-link(href=`/products/detail/${item.productInfo.slug}`) #{item.productInfo.title}
 
-                                        td.fw-bold.text-pink #{item.productInfo.newPrice}$
+                                        td.fw-bold.text-pink #{item.productInfo.newPrice}đ
 
                                         td.text-center
                                             input.cart-input-qty(
@@ -51,7 +51,7 @@ block main
                                                 product-id=item.product_id
                                             )
 
-                                        td.fw-bold.text-danger.fs-5 #{item.totalPrice}$
+                                        td.fw-bold.text-danger.fs-5 #{item.totalPrice}đ
 
                                         td.text-center
                                             a.btn.btn-delete-pink(
@@ -72,7 +72,7 @@ block main
                     .cart-summary-box
                         h3.total-text
                             | Tổng đơn hàng: 
-                            span.total-price #{cartDetail.totalPrice}$
+                            span.total-price #{cartDetail.totalPrice}đ
                         
                         div.mt-4
                             a.btn.btn-checkout-pink(
