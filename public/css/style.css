@@ -760,3 +760,54 @@ block main {
     box-shadow: none;
     border-color: #dee2e6;
 }
+
+/* ==================== AVATAR MINI HEADER ==================== */
+.user-avatar-mini {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ffccdf;
+    background-color: #fffafc;
+    box-shadow: 0 2px 5px rgba(232, 62, 140, 0.15);
+}
+
+/* ==================== TRANG THÔNG TIN TÀI KHOẢN (PROFILE) ==================== */
+
+.user-avatar-profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ffccdf;
+    background-color: #fffafc;
+    box-shadow: 0 8px 20px rgba(232, 62, 140, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.user-avatar-profile:hover {
+    transform: scale(1.05);
+}
+
+.profile-info-box {
+    background-color: #fffafc;
+    border: 2px dashed #ffccdf;
+    border-radius: 16px;
+    padding: 25px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-info-box .info-item {
+    border-bottom: 2px dashed #ffe6f2;
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.profile-info-box .info-item:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}

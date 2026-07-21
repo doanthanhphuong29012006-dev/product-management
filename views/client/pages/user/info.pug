@@ -2,9 +2,35 @@ extends ../../layouts/default.pug
 include ../../mixins/box-head.pug
 
 block main
-    .container.my-3
-        .row
-            .col-12
-                +box-head("Thông tin tài khoản")
+    .container.my-5
+        .row.justify-content-center
+            .col-lg-8
+                .auth-card
+                    h2.title-pink.text-center.mb-4 Hồ Sơ Của Tôi
+                    
+                    .row.align-items-center
+                        .col-md-4.text-center.mb-4.mb-md-0
+                            img.user-avatar-profile(
+                                src=(user.avatar ? user.avatar : "/images/pig-logo1.png")
+                                alt=user.fullName
+                                onerror="this.src='/images/pig-logo1.png'"
+                            )
+                            h4.mt-3.fw-bold.text-pink #{user.fullName}
+                            
+                            if (user.status === "active")
+                                span.badge.bg-success.px-3.py-2 Hoạt động
+                            else
+                                span.badge.bg-danger.px-3.py-2 Bị khóa
 
-        div #{user}
+                        .col-md-8
+                            .profile-info-box
+                                .info-item.mb-3
+                                    span.fw-bold.text-muted Họ và tên:
+                                    span.text-dark.fs-5.ms-2 #{user.fullName}
+                                
+                                .info-item.mb-3
+                                    span.fw-bold.text-muted Email:
+                                    span.text-dark.fs-5.ms-2 #{user.email}
+
+                                .mt-4.text-end
+                                    a.btn.btn-hero-pink(href="#") Cập nhật thông tin

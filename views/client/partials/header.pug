@@ -44,7 +44,14 @@ header.header
 
                         if (user)
                             li 
-                                a(href="/user/info") #{user.fullName}
+                                a(href="/user/info" class="d-flex align-items-center")
+                                    //- Hiển thị avatar user, nếu chưa có thì lấy ảnh logo bé heo làm mặc định
+                                    img.user-avatar-mini.me-2(
+                                        src=(user.avatar ? user.avatar : "/images/pig-logo1.png") 
+                                        alt=user.fullName
+                                        onerror="this.src='/images/pig-logo1.png'"
+                                    )
+                                    span #{user.fullName}
 
                             li
                                 a(href="/user/logout") Đăng xuất
