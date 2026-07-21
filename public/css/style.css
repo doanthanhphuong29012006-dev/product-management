@@ -59,9 +59,10 @@ block main {
 .header .inner-menu > ul > li > a {
     color: #d63384;
     font-weight: 600;
-    padding: 10px 18px;
+    padding: 10px 14px;
     border-radius: 20px;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .header .inner-menu > ul > li > a:hover {
