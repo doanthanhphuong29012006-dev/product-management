@@ -77,12 +77,16 @@ module.exports.loginPost = async (req, res) => {
 
     res.cookie("tokenUser", user.tokenUser);
 
-    if (req.cookies.cartId) {
+    const cart = await Cart.findOne({ user_id: user.id});
+
+    if (!cart) {
         await Cart.updateOne({
             _id: req.cookies.cartId
         }, {
             user_id: user.id
         });
+    } else {
+        res.cookie("cartId", cart.id);
     }
 
     res.redirect("/");
@@ -91,6 +95,7 @@ module.exports.loginPost = async (req, res) => {
 // [GET]/user/logout
 module.exports.logout = (req, res) => {
     res.clearCookie("tokenUser");
+    res.clearCookie("cartId");
 
     res.redirect("/");
 }
