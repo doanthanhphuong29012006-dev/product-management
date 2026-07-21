@@ -746,3 +746,16 @@ block main {
     color: #e83e8c;
     text-decoration: underline;
 }
+
+/* Làm xám ô input khi ở trạng thái chỉ đọc (readonly) */
+.input-pink[readonly] {
+    background-color: #e9ecef;
+    color: #6c757d;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+}
+
+.input-pink[readonly]:focus {
+    box-shadow: none;
+    border-color: #dee2e6;
+}
