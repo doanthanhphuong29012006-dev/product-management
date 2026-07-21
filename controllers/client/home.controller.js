@@ -8,7 +8,7 @@ module.exports.index = async (req, res) => {
         deleted: false,
         feature: "1",
         status: "active"
-    }).limit(8);
+    }).sort({ position: "desc" }).limit(8);
 
     const newProductsFeatured = productHelper.newProductsPrice(productsFeatured);
 
