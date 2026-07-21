@@ -1,0 +1,72 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main
+    +alert-error(5000)
+    +alert-success(5000)
+
+    .container.my-5
+        .row.justify-content-center
+            .col-lg-6.col-md-8
+                .auth-card
+                    .text-center.mb-4
+                        h2.title-pink.mt-2 Chỉnh sửa thông tin
+                        p.text-muted.mt-2 Cập nhật hồ sơ cá nhân của bạn
+
+                    form(
+                        action="/user/edit?_method=PATCH"
+                        method="POST"
+                        enctype="multipart/form-data"
+                    )
+                        .mb-4.text-center(upload-image)
+                            label.form-label.fw-bold.text-pink.d-block(for="avatar") Thay đổi ảnh đại diện
+
+                            input.form-control(
+                                type="file"
+                                id="avatar"
+                                name="avatar"
+                                accept="image/*"
+                                upload-image-input
+                            )
+
+                            img.image-preview.user-avatar-profile.mt-3(
+                                src=(user.avatar ? user.avatar : "/images/pig-logo1.png")
+                                upload-image-preview
+                                onerror="this.src='/images/pig-logo1.png'"
+                            )
+
+                        .mb-3
+                            label.form-label.fw-bold.text-pink(for="fullName") Họ và tên
+                            input.form-control.input-pink(
+                                type="text"
+                                id="fullName"
+                                name="fullName"
+                                value=user.fullName
+                                required
+                            )
+
+                        .mb-3
+                            label.form-label.fw-bold.text-pink(for="email") Email
+                            input.form-control.input-pink(
+                                type="email"
+                                id="email"
+                                name="email"
+                                value=user.email
+                                readonly
+                            )
+
+                        .mb-4
+                            label.form-label.fw-bold.text-pink(for="phone") Số điện thoại
+                            input.form-control.input-pink(
+                                type="text"
+                                id="phone"
+                                name="phone"
+                                value=user.phone
+                            )
+
+                        button.btn.btn-hero-pink.w-100(
+                            type="submit"
+                        ) Lưu thay đổi
+
+                    .text-center.mt-4
+                        a.register-link(href="/user/info") Quay lại trang hồ sơ

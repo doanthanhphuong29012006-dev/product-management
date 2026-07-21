@@ -196,3 +196,23 @@ module.exports.info = async (req, res) => {
         pageTitle: "Thông tin tài khoản"
     });
 }
+
+// [GET]/user/edit
+module.exports.edit = async (req, res) => {
+    res.render('client/pages/user/edit', {
+        pageTitle: "Chỉnh sửa thông tin"
+    });
+}
+
+// [POST]/user/editPatch
+module.exports.editPatch = async (req, res) => {
+    try {
+        await User.updateOne({ tokenUser: req.cookies.tokenUser }, req.body);
+        req.flash('success', "Cập nhật tài khoản thành công!");
+    } catch (error) {
+        req.flash('error', "Cập nhật tài khoản thất bại!");
+    }
+
+    const currentUrl = req.get('Referrer');
+    res.redirect(currentUrl);
+}
