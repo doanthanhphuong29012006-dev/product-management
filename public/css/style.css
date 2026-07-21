@@ -703,3 +703,46 @@ block main {
 .info-box-success strong {
     font-size: 15px;
 }
+
+/* ==================== TRANG ĐĂNG NHẬP / ĐĂNG KÝ ==================== */
+
+.auth-card {
+    background-color: #ffffff;
+    border: 2px dashed #ffccdf;
+    border-radius: 24px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 30px rgba(232, 62, 140, 0.08);
+}
+
+.title-pink {
+    color: #d63384;
+    font-weight: 800;
+    font-size: 28px;
+}
+
+/* Link Quên mật khẩu */
+.forgot-link {
+    color: #e83e8c;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.forgot-link:hover {
+    color: #d63384;
+    text-decoration: underline;
+}
+
+/* Link Đăng ký */
+.register-link {
+    color: #d63384;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.register-link:hover {
+    color: #e83e8c;
+    text-decoration: underline;
+}
