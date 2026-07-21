@@ -53,6 +53,11 @@ app.use(async (req, res, next) => {
 //Routes
 routeAdmin(app);
 route(app);
+app.use((req, res) => {
+    res.status(404).render('client/pages/errors/404', {
+        pageTitle: "404 Không tìm thấy trang"
+    });
+});
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);

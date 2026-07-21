@@ -15,6 +15,9 @@ html
                     img.pig-dizzy-img(src="/images/dizzy-pig.png" alt="Heo")
 
                 h2.error-title Ôi không! Bé heo đi lạc đường rồi...
-                p.error-desc Đăng ký làm gì! Trang admin ai cho đăng ký mà vô???
+                p.error-desc Trang không tồn tại, quay lại đê
 
-                a.btn-pink-home(href=`${prefixAdmin}/dashboard`) Đưa bé heo về nhà
+                button(
+                    class="btn-pink-home"
+                    onclick="history.back()"
+                ) Đưa bé heo về nhà

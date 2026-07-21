@@ -56,10 +56,4 @@ module.exports = (app) => {
     );
 
     app.use(PATH_ADMIN + '/auth', authRoutes);
-
-    // app.use('*', (req, res) => {
-    //     res.status(404).render('admin/pages/errors/404', {
-    //         pageTitle: "404 Không tìm thấy trang"
-    //     });
-    // });
 }
