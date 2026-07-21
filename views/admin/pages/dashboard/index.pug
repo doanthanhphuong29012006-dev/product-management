@@ -1,10 +1,64 @@
 extends ../../layouts/default.pug
 
 block main
-    a.text-decoration-none.text-dark(href="/") 
-        h1.mb-4 Trang tổng quan
-    
-    div #{user}
-    div ----------------------
-    div #{role.title}
-    div #{role.permissions}
+    h1.mb-4 Trang tổng quan
+
+    .row.mt-4
+        .col-12
+            .card.mb-4.shadow-sm
+                .card-header.fw-bold Thông tin tài khoản
+
+                .card-body
+                    if (user.avatar)
+                        img(
+                            src=user.avatar
+                            style="height: 100px; width: 100px; object-fit: cover; border-radius: 50%; border: 2px solid #ffccdf; margin-bottom: 15px;"
+                        )
+
+                    if (user.fullName)
+                        p.mb-2 Họ tên: <b>#{user.fullName}</b>
+
+                    if (user.email)
+                        p.mb-2 Email: <b>#{user.email}</b>
+
+                    if (user.phone)
+                        p.mb-2 Số điện thoại: <b>#{user.phone}</b>
+
+                    if (role.title)
+                        p.mb-0 Phân quyền: <b>#{role.title}</b>
+
+        .col-md-6
+            .card.mb-4.shadow-sm
+                .card-header.fw-bold Danh mục sản phẩm
+
+                .card-body
+                    p.mb-2 Số lượng: <b>#{statistic.categoryProduct.total}</b>
+                    p.mb-2 Hoạt động: <b class="text-success">#{statistic.categoryProduct.active}</b>
+                    p.mb-0 Dừng hoạt động: <b class="text-danger">#{statistic.categoryProduct.inactive}</b>
+
+        .col-md-6
+            .card.mb-4.shadow-sm
+                .card-header.fw-bold Sản phẩm
+
+                .card-body
+                    p.mb-2 Số lượng: <b>#{statistic.product.total}</b>
+                    p.mb-2 Hoạt động: <b class="text-success">#{statistic.product.active}</b>
+                    p.mb-0 Dừng hoạt động: <b class="text-danger">#{statistic.product.inactive}</b>
+
+        .col-md-6
+            .card.mb-4.shadow-sm
+                .card-header.fw-bold Tài khoản admin
+
+                .card-body
+                    p.mb-2 Số lượng: <b>#{statistic.account.total}</b>
+                    p.mb-2 Hoạt động: <b class="text-success">#{statistic.account.active}</b>
+                    p.mb-0 Dừng hoạt động: <b class="text-danger">#{statistic.account.inactive}</b>
+
+        .col-md-6
+            .card.mb-4.shadow-sm
+                .card-header.fw-bold Tài khoản client
+
+                .card-body
+                    p.mb-2 Số lượng: <b>#{statistic.user.total}</b>
+                    p.mb-2 Hoạt động: <b class="text-success">#{statistic.user.active}</b>
+                    p.mb-0 Dừng hoạt động: <b class="text-danger">#{statistic.user.inactive}</b>
